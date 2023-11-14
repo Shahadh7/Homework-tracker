@@ -14,19 +14,9 @@ namespace HomeworkTracker
     public partial class Dashboard : Form
     {
 
-        List<Student> students = new List<Student>();
-
         public Dashboard()
         {
             InitializeComponent();
-
-            DataAccess db = new DataAccess();
-            students = db.GetStudents();
-            
-            foreach (Student student in students)
-            {
-                MessageBox.Show(student.studentName);
-            }
         }
     }
 }

@@ -31,18 +31,27 @@ namespace HomeworkTracker
 
             if(isValid)
             {
-                MessageBox.Show("valid data");
+                DataAccess db = new DataAccess();
+                db.SignUp(username, password);
             }
-
-
-
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            Container obj = new Container();
-            this.Hide();
-            obj.Show();
+
+            string username = txtboxLoginUsername.Text;
+            string password = txtboxLoginPassword.Text;
+
+            bool isValid = validateLoginData(username, password);
+
+            if (isValid)
+            {
+                Container obj = new Container();
+                this.Hide();
+                obj.Show();
+                /*DataAccess db = new DataAccess();
+                db.SignUp(username, password);*/
+            }
         }
 
         private bool validateSingupData(string username, string password, string ConfPassword)
@@ -55,9 +64,9 @@ namespace HomeworkTracker
 
             
             //validate username
-            if (username == "")
+            if (username == string.Empty)
             {
-                errorProvider1.SetError(txtboxSignupUsername, "Please enter the username.");
+                errorProvider1.SetError(txtboxSignupUsername, "Username cannot be empty.");
             }
             else
             {
@@ -65,7 +74,7 @@ namespace HomeworkTracker
             }
 
             //validate password
-            if (password == "")
+            if (password == string.Empty)
             { 
                 errorProvider1.SetError(txtboxSignupPassword, "Password cannot be empty.");
 
@@ -76,7 +85,7 @@ namespace HomeworkTracker
             }
 
             //validate confirm password
-            if (ConfPassword == "")
+            if (ConfPassword == string.Empty)
             {
                 errorProvider1.SetError(txtboxSignupPasswordConf, "Confirm Password cannot be empty.");
             }
@@ -91,6 +100,44 @@ namespace HomeworkTracker
 
 
             if (usernameValid && passwordValid && passwordConfValid) {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool validateLoginData(string username, string password)
+        {
+            errorProvider1.Clear();
+
+            bool usernameValid = false;
+            bool passwordValid = false;
+
+            //validate username
+            if (username == string.Empty)
+            {
+                errorProvider1.SetError(txtboxLoginUsername, "Username cannot be empty.");
+            }
+            else
+            {
+                usernameValid = true;
+            }
+
+            //validate password
+            if (password == string.Empty)
+            {
+                errorProvider1.SetError(txtboxLoginPassword, "Password cannot be empty.");
+
+            }
+            else
+            {
+                passwordValid = true;
+            }
+
+            if (usernameValid && passwordValid)
+            {
                 return true;
             }
             else

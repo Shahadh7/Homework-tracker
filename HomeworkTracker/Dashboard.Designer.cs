@@ -58,7 +58,7 @@
             nightLabel1.BackColor = Color.Transparent;
             nightLabel1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             nightLabel1.ForeColor = Color.FromArgb(114, 118, 127);
-            nightLabel1.Location = new Point(34, 25);
+            nightLabel1.Location = new Point(21, 20);
             nightLabel1.Name = "nightLabel1";
             nightLabel1.Size = new Size(218, 21);
             nightLabel1.TabIndex = 4;
@@ -70,7 +70,7 @@
             nightLabel2.BackColor = Color.Transparent;
             nightLabel2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             nightLabel2.ForeColor = Color.FromArgb(114, 118, 127);
-            nightLabel2.Location = new Point(34, 399);
+            nightLabel2.Location = new Point(21, 397);
             nightLabel2.Name = "nightLabel2";
             nightLabel2.Size = new Size(184, 21);
             nightLabel2.TabIndex = 5;

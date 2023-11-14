@@ -16,16 +16,17 @@ namespace HomeworkTracker
     public partial class Dashboard : Form
     {
 
+        List<Category> categories;
         public Dashboard()
         {
             InitializeComponent();
-            
         }
 
         private void fetchAllPendingTasks()
         {
             DataAccess db = new DataAccess();
             List<Task> tasks = db.GetAllTodaysPendingTasks();
+
 
             if (tasks.Count > 0)
             {
@@ -39,6 +40,10 @@ namespace HomeworkTracker
                     taskControl.Percentage = task.progressPercentage;
                     taskControl.ImportanceLevel = task.importanceLevelID.ToString();
                     taskControl.Data = task;
+
+                    var foundValue = categories.Find(c => c.categoryID == task.categoryID);
+                    taskControl.Category = foundValue.name;
+
                     panelPendingTasks.Controls.Add(taskControl);
                     taskControl.updateParent += OnUpdateParent;
                 }
@@ -70,7 +75,11 @@ namespace HomeworkTracker
                     taskControl.Percentage = task.progressPercentage;
                     taskControl.ImportanceLevel = task.importanceLevelID.ToString();
                     taskControl.Data = task;
+
+                    var foundValue = categories.Find(c => c.categoryID == task.categoryID);
+                    taskControl.Category = foundValue.name;
                     panelCompletedTasks.Controls.Add(taskControl);
+
                     taskControl.updateParent += OnUpdateParent;
                 }
             }
@@ -84,8 +93,15 @@ namespace HomeworkTracker
             }
         }
 
+        private void fetchCategories()
+        {
+            DataAccess db = new DataAccess();
+            categories = db.getAllCategories();
+        }
+
         private void Dashboard_Load(object sender, EventArgs e)
         {
+            fetchCategories();
             fetchAllPendingTasks();
             fetchAllCompletedTasks();
         }

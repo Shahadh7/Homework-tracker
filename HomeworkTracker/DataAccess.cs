@@ -12,7 +12,7 @@ namespace HomeworkTracker
     public class DataAccess
     {
 
-        //User Authentication
+        //User Authentication related functions
         public void SignUp(string username, string password)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.connectionvalue("HWTracker")))
@@ -100,7 +100,49 @@ namespace HomeworkTracker
         }
 
 
-        //Task Management
+        //Task Management related functions
+
+        public List<Task> GetAllPendingTasks()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.connectionvalue("HWTracker")))
+            {
+
+                List<Task> tasks = new List<Task>();
+
+                try
+                {
+                    var sql = "SELECT * FROM hwtracker.task WHERE studentID = @studentID AND completed = @completed";
+                    tasks = connection.Query<Task>(sql, new { studentID = globalVariables.currentStudent.studentID, completed = 0 }).ToList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                return tasks;
+            }
+        }
+
+        public List<Task> GetAllCompletedTasks()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.connectionvalue("HWTracker")))
+            {
+
+                List<Task> tasks = new List<Task>();
+
+                try
+                {
+                    var sqlCheck = "SELECT * FROM hwtracker.task WHERE studentID = @studentID AND completed = @completed";
+                    tasks = connection.Query<Task>(sqlCheck, new { studentID = globalVariables.currentStudent.studentID, completed = 1 }).ToList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                return tasks;
+            }
+        }
         public List<Task> GetAllTodaysPendingTasks()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.connectionvalue("HWTracker")))
@@ -205,6 +247,36 @@ namespace HomeworkTracker
             }
         }
 
+        public void UpdateTask(Task task)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.connectionvalue("HWTracker")))
+            {
+
+                try
+                {
+                    var sql = "UPDATE hwtracker.task SET progressPercentage = @progressPercentage, " +
+                               "title= @title, importanceLevelID = @importanceLevelID, dueDate = @dueDate ," +
+                               "categoryID = @categoryID    WHERE taskID = @taskID";
+                    var affectedRows = connection.Execute(sql, task);
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            }
+
+            if (task.progressPercentage == 100)
+            {
+                ToggleCompleted(1, task.taskID);
+            }
+        }
+
+
+
+
+        //Category related functions
         public List<Category> getAllCategories()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.connectionvalue("HWTracker")))
@@ -228,6 +300,8 @@ namespace HomeworkTracker
             }
         }
 
+
+        //Imporatance Level related functions
         public List<ImportanceLevel> getAllImportanceLevels()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.connectionvalue("HWTracker")))
@@ -250,31 +324,7 @@ namespace HomeworkTracker
             }
         }
 
-        public void UpdateTask(Task task)
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.connectionvalue("HWTracker")))
-            {
-
-                try
-                {
-                    var sql = "UPDATE hwtracker.task SET progressPercentage = @progressPercentage, " +
-                               "title= @title, importanceLevelID = @importanceLevelID, dueDate = @dueDate ," +
-                               "categoryID = @categoryID    WHERE taskID = @taskID";
-                    var affectedRows = connection.Execute(sql, task);
-                    connection.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-
-            }
-
-            if(task.progressPercentage == 100)
-            {
-                ToggleCompleted(1, task.taskID);
-            }
-        }
+        
 
     }
 }

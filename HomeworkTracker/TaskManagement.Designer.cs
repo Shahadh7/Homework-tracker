@@ -28,95 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            flowLayoutPanel1 = new FlowLayoutPanel();
-            task1 = new CustomControlsProject.CustomControls.TaskControl();
-            task2 = new CustomControlsProject.CustomControls.TaskControl();
-            task3 = new CustomControlsProject.CustomControls.TaskControl();
-            customTextBox1 = new CustomControls.RJControls.CustomTextBox();
+            panelPendingTasks = new FlowLayoutPanel();
+            textBoxSearch = new CustomControls.RJControls.CustomTextBox();
             buttonTaskAdd = new CustomControls.RJControls.CustomButton();
             labelHeading = new Label();
-            poisonComboBox1 = new ReaLTaiizor.Controls.PoisonComboBox();
+            comboBoxCategory = new ReaLTaiizor.Controls.PoisonComboBox();
             label1 = new Label();
-            flowLayoutPanel2 = new FlowLayoutPanel();
-            task4 = new CustomControlsProject.CustomControls.TaskControl();
-            task5 = new CustomControlsProject.CustomControls.TaskControl();
-            task6 = new CustomControlsProject.CustomControls.TaskControl();
+            panelCompletedTasks = new FlowLayoutPanel();
             labelRemaining = new ReaLTaiizor.Controls.FoxLabel();
             labelCompleted = new ReaLTaiizor.Controls.FoxLabel();
-            flowLayoutPanel1.SuspendLayout();
-            flowLayoutPanel2.SuspendLayout();
+            buttonResetFilter = new CustomControls.RJControls.CustomButton();
+            searchIcon = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)searchIcon).BeginInit();
             SuspendLayout();
             // 
-            // flowLayoutPanel1
+            // panelPendingTasks
             // 
-            flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.Controls.Add(task1);
-            flowLayoutPanel1.Controls.Add(task2);
-            flowLayoutPanel1.Controls.Add(task3);
-            flowLayoutPanel1.Location = new Point(34, 159);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(697, 289);
-            flowLayoutPanel1.TabIndex = 1;
+            panelPendingTasks.AutoScroll = true;
+            panelPendingTasks.Location = new Point(34, 159);
+            panelPendingTasks.Name = "panelPendingTasks";
+            panelPendingTasks.Size = new Size(697, 289);
+            panelPendingTasks.TabIndex = 1;
             // 
-            // task1
+            // textBoxSearch
             // 
-            task1.BackColor = Color.White;
-            task1.Completed = false;
-            task1.Data = null;
-            task1.ImportanceLevel = null;
-            task1.Location = new Point(3, 3);
-            task1.Name = "task1";
-            task1.Percentage = 0;
-            task1.Size = new Size(690, 68);
-            task1.TabIndex = 0;
-            task1.Title = null;
-            // 
-            // task2
-            // 
-            task2.BackColor = Color.White;
-            task2.Completed = false;
-            task2.Data = null;
-            task2.ImportanceLevel = null;
-            task2.Location = new Point(3, 77);
-            task2.Name = "task2";
-            task2.Percentage = 0;
-            task2.Size = new Size(690, 68);
-            task2.TabIndex = 1;
-            task2.Title = null;
-            // 
-            // task3
-            // 
-            task3.BackColor = Color.White;
-            task3.Completed = false;
-            task3.Data = null;
-            task3.ImportanceLevel = null;
-            task3.Location = new Point(3, 151);
-            task3.Name = "task3";
-            task3.Percentage = 0;
-            task3.Size = new Size(690, 68);
-            task3.TabIndex = 2;
-            task3.Title = null;
-            // 
-            // customTextBox1
-            // 
-            customTextBox1.BackColor = SystemColors.Window;
-            customTextBox1.BorderColor = Color.Transparent;
-            customTextBox1.BorderFocusColor = Color.CornflowerBlue;
-            customTextBox1.BorderRadius = 5;
-            customTextBox1.BorderSize = 2;
-            customTextBox1.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point);
-            customTextBox1.ForeColor = Color.FromArgb(64, 64, 64);
-            customTextBox1.Location = new Point(34, 83);
-            customTextBox1.Margin = new Padding(4);
-            customTextBox1.Multiline = false;
-            customTextBox1.Name = "customTextBox1";
-            customTextBox1.Padding = new Padding(10, 7, 10, 7);
-            customTextBox1.PasswordChar = false;
-            customTextBox1.PlaceholderColor = Color.DarkGray;
-            customTextBox1.PlaceholderText = "Search";
-            customTextBox1.Size = new Size(227, 31);
-            customTextBox1.TabIndex = 2;
-            customTextBox1.UnderlinedStyle = false;
+            textBoxSearch.BackColor = SystemColors.Window;
+            textBoxSearch.BorderColor = Color.Transparent;
+            textBoxSearch.BorderFocusColor = Color.CornflowerBlue;
+            textBoxSearch.BorderRadius = 5;
+            textBoxSearch.BorderSize = 2;
+            textBoxSearch.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxSearch.ForeColor = Color.FromArgb(64, 64, 64);
+            textBoxSearch.Location = new Point(34, 83);
+            textBoxSearch.Margin = new Padding(4);
+            textBoxSearch.Multiline = false;
+            textBoxSearch.Name = "textBoxSearch";
+            textBoxSearch.Padding = new Padding(10, 7, 10, 7);
+            textBoxSearch.PasswordChar = false;
+            textBoxSearch.PlaceholderColor = Color.DarkGray;
+            textBoxSearch.PlaceholderText = "Search";
+            textBoxSearch.Size = new Size(145, 31);
+            textBoxSearch.TabIndex = 2;
+            textBoxSearch.UnderlinedStyle = false;
+            textBoxSearch.KeyPress += textBoxSearch_KeyPress;
             // 
             // buttonTaskAdd
             // 
@@ -129,9 +83,9 @@
             buttonTaskAdd.FlatStyle = FlatStyle.Flat;
             buttonTaskAdd.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             buttonTaskAdd.ForeColor = Color.White;
-            buttonTaskAdd.Location = new Point(581, 83);
+            buttonTaskAdd.Location = new Point(596, 83);
             buttonTaskAdd.Name = "buttonTaskAdd";
-            buttonTaskAdd.Size = new Size(150, 31);
+            buttonTaskAdd.Size = new Size(135, 31);
             buttonTaskAdd.TabIndex = 3;
             buttonTaskAdd.Text = "Add New";
             buttonTaskAdd.TextColor = Color.White;
@@ -148,77 +102,36 @@
             labelHeading.TabIndex = 5;
             labelHeading.Text = "Task Management";
             // 
-            // poisonComboBox1
+            // comboBoxCategory
             // 
-            poisonComboBox1.FormattingEnabled = true;
-            poisonComboBox1.ItemHeight = 23;
-            poisonComboBox1.Location = new Point(405, 85);
-            poisonComboBox1.Name = "poisonComboBox1";
-            poisonComboBox1.PromptText = "Filter by Category";
-            poisonComboBox1.Size = new Size(170, 29);
-            poisonComboBox1.TabIndex = 6;
-            poisonComboBox1.Text = "Filter by Category";
-            poisonComboBox1.UseSelectable = true;
+            comboBoxCategory.FormattingEnabled = true;
+            comboBoxCategory.ItemHeight = 23;
+            comboBoxCategory.Location = new Point(303, 85);
+            comboBoxCategory.Name = "comboBoxCategory";
+            comboBoxCategory.PromptText = "Filter by Category";
+            comboBoxCategory.Size = new Size(170, 29);
+            comboBoxCategory.TabIndex = 6;
+            comboBoxCategory.Text = "Filter by Category";
+            comboBoxCategory.UseSelectable = true;
+            comboBoxCategory.SelectedIndexChanged += comboBoxCategory_SelectedIndexChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(357, 90);
+            label1.Location = new Point(255, 90);
             label1.Name = "label1";
             label1.Size = new Size(42, 20);
             label1.TabIndex = 7;
             label1.Text = "Filter";
             // 
-            // flowLayoutPanel2
+            // panelCompletedTasks
             // 
-            flowLayoutPanel2.AutoScroll = true;
-            flowLayoutPanel2.Controls.Add(task4);
-            flowLayoutPanel2.Controls.Add(task5);
-            flowLayoutPanel2.Controls.Add(task6);
-            flowLayoutPanel2.Location = new Point(34, 482);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(697, 289);
-            flowLayoutPanel2.TabIndex = 8;
-            // 
-            // task4
-            // 
-            task4.BackColor = Color.White;
-            task4.Completed = false;
-            task4.Data = null;
-            task4.ImportanceLevel = null;
-            task4.Location = new Point(3, 3);
-            task4.Name = "task4";
-            task4.Percentage = 0;
-            task4.Size = new Size(690, 68);
-            task4.TabIndex = 0;
-            task4.Title = null;
-            // 
-            // task5
-            // 
-            task5.BackColor = Color.White;
-            task5.Completed = false;
-            task5.Data = null;
-            task5.ImportanceLevel = null;
-            task5.Location = new Point(3, 77);
-            task5.Name = "task5";
-            task5.Percentage = 0;
-            task5.Size = new Size(690, 68);
-            task5.TabIndex = 1;
-            task5.Title = null;
-            // 
-            // task6
-            // 
-            task6.BackColor = Color.White;
-            task6.Completed = false;
-            task6.Data = null;
-            task6.ImportanceLevel = null;
-            task6.Location = new Point(3, 151);
-            task6.Name = "task6";
-            task6.Percentage = 0;
-            task6.Size = new Size(690, 68);
-            task6.TabIndex = 2;
-            task6.Title = null;
+            panelCompletedTasks.AutoScroll = true;
+            panelCompletedTasks.Location = new Point(34, 482);
+            panelCompletedTasks.Name = "panelCompletedTasks";
+            panelCompletedTasks.Size = new Size(697, 289);
+            panelCompletedTasks.TabIndex = 8;
             // 
             // labelRemaining
             // 
@@ -240,6 +153,37 @@
             labelCompleted.TabIndex = 10;
             labelCompleted.Text = "Completed Tasks";
             // 
+            // buttonResetFilter
+            // 
+            buttonResetFilter.BackColor = Color.FromArgb(239, 69, 101);
+            buttonResetFilter.BackgroundColor = Color.FromArgb(239, 69, 101);
+            buttonResetFilter.BorderColor = Color.PaleVioletRed;
+            buttonResetFilter.BorderRadius = 5;
+            buttonResetFilter.BorderSize = 0;
+            buttonResetFilter.FlatAppearance.BorderSize = 0;
+            buttonResetFilter.FlatStyle = FlatStyle.Flat;
+            buttonResetFilter.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonResetFilter.ForeColor = Color.White;
+            buttonResetFilter.Location = new Point(479, 85);
+            buttonResetFilter.Name = "buttonResetFilter";
+            buttonResetFilter.Size = new Size(108, 31);
+            buttonResetFilter.TabIndex = 11;
+            buttonResetFilter.Text = "Reset filter";
+            buttonResetFilter.TextColor = Color.White;
+            buttonResetFilter.UseVisualStyleBackColor = false;
+            buttonResetFilter.Click += buttonResetFilter_Click;
+            // 
+            // searchIcon
+            // 
+            searchIcon.Image = Properties.Resources.Search;
+            searchIcon.Location = new Point(184, 85);
+            searchIcon.Name = "searchIcon";
+            searchIcon.Size = new Size(31, 29);
+            searchIcon.SizeMode = PictureBoxSizeMode.StretchImage;
+            searchIcon.TabIndex = 12;
+            searchIcon.TabStop = false;
+            searchIcon.Click += searchIcon_Click;
+            // 
             // TaskManagement
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -247,39 +191,37 @@
             BackColor = Color.FromArgb(216, 238, 254);
             ClientSize = new Size(760, 783);
             ControlBox = false;
+            Controls.Add(searchIcon);
+            Controls.Add(buttonResetFilter);
             Controls.Add(labelCompleted);
             Controls.Add(labelRemaining);
-            Controls.Add(flowLayoutPanel2);
+            Controls.Add(panelCompletedTasks);
             Controls.Add(label1);
-            Controls.Add(poisonComboBox1);
+            Controls.Add(comboBoxCategory);
             Controls.Add(labelHeading);
             Controls.Add(buttonTaskAdd);
-            Controls.Add(customTextBox1);
-            Controls.Add(flowLayoutPanel1);
+            Controls.Add(textBoxSearch);
+            Controls.Add(panelPendingTasks);
             FormBorderStyle = FormBorderStyle.None;
             Name = "TaskManagement";
             Text = "TaskManagement";
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel2.ResumeLayout(false);
+            Load += TaskManagement_Load;
+            ((System.ComponentModel.ISupportInitialize)searchIcon).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private FlowLayoutPanel flowLayoutPanel1;
-        private CustomControls.RJControls.CustomTextBox customTextBox1;
+        private FlowLayoutPanel panelPendingTasks;
+        private CustomControls.RJControls.CustomTextBox textBoxSearch;
         private CustomControls.RJControls.CustomButton buttonTaskAdd;
-        private CustomControlsProject.CustomControls.TaskControl task1;
-        private CustomControlsProject.CustomControls.TaskControl task2;
-        private CustomControlsProject.CustomControls.TaskControl task3;
         private Label labelHeading;
-        private ReaLTaiizor.Controls.PoisonComboBox poisonComboBox1;
+        private ReaLTaiizor.Controls.PoisonComboBox comboBoxCategory;
         private Label label1;
-        private FlowLayoutPanel flowLayoutPanel2;
-        private CustomControlsProject.CustomControls.TaskControl task4;
-        private CustomControlsProject.CustomControls.TaskControl task5;
-        private CustomControlsProject.CustomControls.TaskControl task6;
+        private FlowLayoutPanel panelCompletedTasks;
         private ReaLTaiizor.Controls.FoxLabel labelRemaining;
         private ReaLTaiizor.Controls.FoxLabel labelCompleted;
+        private CustomControls.RJControls.CustomButton buttonResetFilter;
+        private PictureBox searchIcon;
     }
 }

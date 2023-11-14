@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CustomControlsProject.CustomControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,27 +13,216 @@ namespace HomeworkTracker
 {
     public partial class TaskManagement : Form
     {
+
+        List<Category> categories;
+        List<Task> pendingTasks;
+        List<Task> completedTasks;
+
         public TaskManagement()
         {
             InitializeComponent();
+        }
 
-            task1.Title = "Hello world";
-            task1.ImportanceLevel = "Medium";
-            task1.Percentage = 10;
-            task2.Percentage = 30;
-            task3.Percentage = 70;
-            task4.Completed = true;
-            task5.Completed = true;
-            task6.Completed = true;
-            task4.Percentage = 100;
-            task5.Percentage = 100;
-            task6.Percentage = 100;
+
+        private void fetchAllPendingTasks()
+        {
+            DataAccess db = new DataAccess();
+            pendingTasks = db.GetAllPendingTasks();
+
+
+            if (pendingTasks.Count > 0)
+            {
+                panelPendingTasks.Controls.Clear();
+                foreach (Task task in pendingTasks)
+                {
+                    TaskControl taskControl = new TaskControl();
+                    taskControl.Completed = task.completed == 1 ? true : false;
+                    taskControl.Title = task.title;
+                    taskControl.DueDate = task.dueDate.ToString();
+                    taskControl.Percentage = task.progressPercentage;
+                    taskControl.ImportanceLevel = task.importanceLevelID.ToString();
+                    taskControl.Data = task;
+
+                    var foundValue = categories.Find(c => c.categoryID == task.categoryID);
+                    taskControl.Category = foundValue.name;
+
+                    panelPendingTasks.Controls.Add(taskControl);
+                    taskControl.updateParent += OnUpdateParent;
+                }
+            }
+            else
+            {
+                panelPendingTasks.Controls.Clear();
+                Label label = new Label();
+                label.Width = 500;
+                label.Text = "No ramaining tasks";
+                panelPendingTasks.Controls.Add(label);
+            }
+        }
+
+        private void fetchAllCompletedTasks()
+        {
+            DataAccess db = new DataAccess();
+            completedTasks = db.GetAllCompletedTasks();
+
+            if (completedTasks.Count > 0)
+            {
+                panelCompletedTasks.Controls.Clear();
+                foreach (Task task in completedTasks)
+                {
+                    TaskControl taskControl = new TaskControl();
+                    taskControl.Completed = task.completed == 1 ? true : false;
+                    taskControl.Title = task.title;
+                    taskControl.DueDate = task.dueDate.ToString();
+                    taskControl.Percentage = task.progressPercentage;
+                    taskControl.ImportanceLevel = task.importanceLevelID.ToString();
+                    taskControl.Data = task;
+
+                    var foundValue = categories.Find(c => c.categoryID == task.categoryID);
+                    taskControl.Category = foundValue.name;
+                    panelCompletedTasks.Controls.Add(taskControl);
+
+                    taskControl.updateParent += OnUpdateParent;
+                }
+            }
+            else
+            {
+                panelCompletedTasks.Controls.Clear();
+                Label label = new();
+                label.Text = "No data available";
+                label.Width = 100;
+                panelCompletedTasks.Controls.Add(label);
+            }
+        }
+
+        private void fetchCategories()
+        {
+            DataAccess db = new DataAccess();
+            categories = db.getAllCategories();
+
+            foreach (Category category in categories)
+            {
+                comboBoxCategory.Items.Add(category.name);
+            }
+        }
+
+
+        private void OnUpdateParent(object sender, EventArgs e)
+        {
+            fetchAllPendingTasks();
+            fetchAllCompletedTasks();
         }
 
         private void buttonTaskAdd_Click(object sender, EventArgs e)
         {
             AddNewTaskFormModal addNewTaskForm = new AddNewTaskFormModal();
             addNewTaskForm.ShowDialog();
+        }
+
+        private void TaskManagement_Load(object sender, EventArgs e)
+        {
+            fetchCategories();
+            fetchAllPendingTasks();
+            fetchAllCompletedTasks();
+        }
+
+        private void filterData(int categoryID)
+        {
+            List<Task> filteredtasks = pendingTasks
+                .Where(item => item.categoryID == categoryID)
+                .ToList();
+
+            panelPendingTasks.Controls.Clear();
+            if(filteredtasks.Count > 0)
+            {
+                foreach (Task task in filteredtasks)
+                {
+                    TaskControl taskControl = new TaskControl();
+                    taskControl.Completed = task.completed == 1 ? true : false;
+                    taskControl.Title = task.title;
+                    taskControl.DueDate = task.dueDate.ToString();
+                    taskControl.Percentage = task.progressPercentage;
+                    taskControl.ImportanceLevel = task.importanceLevelID.ToString();
+                    taskControl.Data = task;
+
+                    var foundValue = categories.Find(c => c.categoryID == task.categoryID);
+                    taskControl.Category = foundValue.name;
+                    panelPendingTasks.Controls.Add(taskControl);
+
+                    taskControl.updateParent += OnUpdateParent;
+                }
+            }
+            else
+            {
+                Label label = new Label();
+                label.Width = 500;
+                label.Text = "No results match the specified criteria";
+                panelPendingTasks.Controls.Add(label);
+            }
+        }
+
+        private void comboBoxCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedValue = comboBoxCategory.SelectedItem.ToString();
+
+            var findCatID = categories.Find(c => c.name == selectedValue).categoryID;
+
+            filterData(findCatID);
+        }
+
+        private void buttonResetFilter_Click(object sender, EventArgs e)
+        {
+            fetchAllPendingTasks();
+        }
+
+        private void searchIcon_Click(object sender, EventArgs e)
+        {
+            if (textBoxSearch.Text.Length > 0)
+            {
+                List<Task> filteredtasks = pendingTasks
+                .Where(item => item.title.ToLower().Contains(textBoxSearch.Text.ToLower()))
+                .ToList();
+
+                panelPendingTasks.Controls.Clear();
+                if(filteredtasks.Count > 0)
+                {
+                    foreach (Task task in filteredtasks)
+                    {
+                        TaskControl taskControl = new TaskControl();
+                        taskControl.Completed = task.completed == 1 ? true : false;
+                        taskControl.Title = task.title;
+                        taskControl.DueDate = task.dueDate.ToString();
+                        taskControl.Percentage = task.progressPercentage;
+                        taskControl.ImportanceLevel = task.importanceLevelID.ToString();
+                        taskControl.Data = task;
+
+                        var foundValue = categories.Find(c => c.categoryID == task.categoryID);
+                        taskControl.Category = foundValue.name;
+                        panelPendingTasks.Controls.Add(taskControl);
+
+                        taskControl.updateParent += OnUpdateParent;
+                    }
+                }
+                else
+                {
+                    Label label = new Label();
+                    label.Width = 500;
+                    label.Text = "There are no matching records based on your search term";
+                    panelPendingTasks.Controls.Add(label);
+                }
+            }
+            else
+            {
+                fetchAllPendingTasks();
+            }
+        }
+
+        private void textBoxSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (textBoxSearch.Text.Length == 0)
+            {
+                fetchAllPendingTasks();
+            }
         }
     }
 }

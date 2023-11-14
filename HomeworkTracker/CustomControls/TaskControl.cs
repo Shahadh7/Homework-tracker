@@ -28,13 +28,20 @@ namespace CustomControlsProject.CustomControls
         private string importanceLevel;
         private int percentage;
         private DateTime dueDate;
-
+        private string categoryName;
 
         [Category("Custom props")]
         public string Title
         {
             get { return taskTitle; }
             set { taskTitle = value; lblTask.Text = value; }
+        }
+
+        [Category("Custom props")]
+        public string Category
+        {
+            get { return categoryName; }
+            set { categoryName = value; lblCategory.Text = value; }
         }
 
         [Category("Custom props")]
@@ -55,7 +62,7 @@ namespace CustomControlsProject.CustomControls
         public int Percentage
         {
             get { return percentage; }
-            set { percentage = value; progressBar.Value = value; }
+            set { percentage = value; progressBar.Value = value; percentageLabel.Text = value.ToString() + "%"; }
         }
 
         [Category("Custom props")]
@@ -118,9 +125,17 @@ namespace CustomControlsProject.CustomControls
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            DataAccess db = new DataAccess();
-            db.RemoveTask(data.taskID);
-            OnUpdateParent();
+            DialogResult dialogResult = MessageBox.Show("Do you really want to delete this task?", "Confirm", MessageBoxButtons.YesNo);
+
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                DataAccess db = new DataAccess();
+                db.RemoveTask(data.taskID);
+                OnUpdateParent();
+            }
+
+            
         }
 
         private void childForm_FormClosed(object sender, FormClosedEventArgs e)

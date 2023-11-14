@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             closeButton = new ReaLTaiizor.Controls.SpaceClose();
-            buttonReset = new CustomControls.RJControls.CustomButton();
             buttonUpdate = new CustomControls.RJControls.CustomButton();
             comboBoxPriority = new ReaLTaiizor.Controls.PoisonComboBox();
             comboBoxCategory = new ReaLTaiizor.Controls.PoisonComboBox();
@@ -41,6 +40,8 @@
             labelTitle = new Label();
             labelHeading = new Label();
             panel1 = new Panel();
+            textBoxPercentage = new CustomControls.RJControls.CustomTextBox();
+            labelPercentage = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -52,7 +53,7 @@
             closeButton.DefaultLocation = true;
             closeButton.Font = new Font("Verdana", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             closeButton.Image = null;
-            closeButton.Location = new Point(620, 3);
+            closeButton.Location = new Point(627, 3);
             closeButton.Margin = new Padding(3, 20, 3, 3);
             closeButton.Name = "closeButton";
             closeButton.NoRounding = false;
@@ -60,25 +61,6 @@
             closeButton.TabIndex = 14;
             closeButton.Text = "x";
             closeButton.Transparent = false;
-            // 
-            // buttonReset
-            // 
-            buttonReset.BackColor = Color.Gray;
-            buttonReset.BackgroundColor = Color.Gray;
-            buttonReset.BorderColor = Color.PaleVioletRed;
-            buttonReset.BorderRadius = 5;
-            buttonReset.BorderSize = 0;
-            buttonReset.FlatAppearance.BorderSize = 0;
-            buttonReset.FlatStyle = FlatStyle.Flat;
-            buttonReset.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonReset.ForeColor = Color.White;
-            buttonReset.Location = new Point(292, 384);
-            buttonReset.Name = "buttonReset";
-            buttonReset.Size = new Size(150, 40);
-            buttonReset.TabIndex = 13;
-            buttonReset.Text = "Reset";
-            buttonReset.TextColor = Color.White;
-            buttonReset.UseVisualStyleBackColor = false;
             // 
             // buttonUpdate
             // 
@@ -98,12 +80,13 @@
             buttonUpdate.Text = "Save";
             buttonUpdate.TextColor = Color.White;
             buttonUpdate.UseVisualStyleBackColor = false;
+            buttonUpdate.Click += buttonUpdate_Click;
             // 
             // comboBoxPriority
             // 
             comboBoxPriority.FormattingEnabled = true;
             comboBoxPriority.ItemHeight = 23;
-            comboBoxPriority.Location = new Point(180, 315);
+            comboBoxPriority.Location = new Point(180, 275);
             comboBoxPriority.Name = "comboBoxPriority";
             comboBoxPriority.Size = new Size(442, 29);
             comboBoxPriority.TabIndex = 11;
@@ -113,7 +96,7 @@
             // 
             comboBoxCategory.FormattingEnabled = true;
             comboBoxCategory.ItemHeight = 23;
-            comboBoxCategory.Location = new Point(180, 261);
+            comboBoxCategory.Location = new Point(180, 221);
             comboBoxCategory.Name = "comboBoxCategory";
             comboBoxCategory.Size = new Size(442, 29);
             comboBoxCategory.TabIndex = 10;
@@ -121,7 +104,7 @@
             // 
             // dateTimeDueDate
             // 
-            dateTimeDueDate.Location = new Point(180, 204);
+            dateTimeDueDate.Location = new Point(180, 164);
             dateTimeDueDate.MinimumSize = new Size(0, 29);
             dateTimeDueDate.Name = "dateTimeDueDate";
             dateTimeDueDate.Size = new Size(442, 29);
@@ -136,7 +119,7 @@
             textBoxTitle.BorderSize = 2;
             textBoxTitle.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point);
             textBoxTitle.ForeColor = Color.FromArgb(64, 64, 64);
-            textBoxTitle.Location = new Point(180, 145);
+            textBoxTitle.Location = new Point(180, 105);
             textBoxTitle.Margin = new Padding(4);
             textBoxTitle.Multiline = false;
             textBoxTitle.Name = "textBoxTitle";
@@ -153,7 +136,7 @@
             labelPriority.AutoSize = true;
             labelPriority.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             labelPriority.ForeColor = Color.White;
-            labelPriority.Location = new Point(34, 316);
+            labelPriority.Location = new Point(34, 276);
             labelPriority.Name = "labelPriority";
             labelPriority.Size = new Size(82, 25);
             labelPriority.TabIndex = 6;
@@ -164,7 +147,7 @@
             labelCategory.AutoSize = true;
             labelCategory.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             labelCategory.ForeColor = Color.White;
-            labelCategory.Location = new Point(34, 262);
+            labelCategory.Location = new Point(34, 222);
             labelCategory.Name = "labelCategory";
             labelCategory.Size = new Size(97, 25);
             labelCategory.TabIndex = 5;
@@ -175,7 +158,7 @@
             labelDueDate.AutoSize = true;
             labelDueDate.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             labelDueDate.ForeColor = Color.White;
-            labelDueDate.Location = new Point(34, 205);
+            labelDueDate.Location = new Point(34, 165);
             labelDueDate.Name = "labelDueDate";
             labelDueDate.Size = new Size(97, 25);
             labelDueDate.TabIndex = 4;
@@ -186,7 +169,7 @@
             labelTitle.AutoSize = true;
             labelTitle.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             labelTitle.ForeColor = Color.White;
-            labelTitle.Location = new Point(34, 147);
+            labelTitle.Location = new Point(34, 107);
             labelTitle.Name = "labelTitle";
             labelTitle.Size = new Size(62, 25);
             labelTitle.TabIndex = 3;
@@ -207,8 +190,9 @@
             // 
             panel1.BackColor = Color.FromArgb(9, 64, 103);
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(textBoxPercentage);
+            panel1.Controls.Add(labelPercentage);
             panel1.Controls.Add(closeButton);
-            panel1.Controls.Add(buttonReset);
             panel1.Controls.Add(buttonUpdate);
             panel1.Controls.Add(comboBoxPriority);
             panel1.Controls.Add(comboBoxCategory);
@@ -224,6 +208,38 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(668, 466);
             panel1.TabIndex = 1;
+            // 
+            // textBoxPercentage
+            // 
+            textBoxPercentage.BackColor = SystemColors.Window;
+            textBoxPercentage.BorderColor = Color.LightGray;
+            textBoxPercentage.BorderFocusColor = Color.CornflowerBlue;
+            textBoxPercentage.BorderRadius = 0;
+            textBoxPercentage.BorderSize = 2;
+            textBoxPercentage.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxPercentage.ForeColor = Color.FromArgb(64, 64, 64);
+            textBoxPercentage.Location = new Point(180, 330);
+            textBoxPercentage.Margin = new Padding(4);
+            textBoxPercentage.Multiline = false;
+            textBoxPercentage.Name = "textBoxPercentage";
+            textBoxPercentage.Padding = new Padding(10, 7, 10, 7);
+            textBoxPercentage.PasswordChar = false;
+            textBoxPercentage.PlaceholderColor = Color.DarkGray;
+            textBoxPercentage.PlaceholderText = "";
+            textBoxPercentage.Size = new Size(442, 31);
+            textBoxPercentage.TabIndex = 16;
+            textBoxPercentage.UnderlinedStyle = false;
+            // 
+            // labelPercentage
+            // 
+            labelPercentage.AutoSize = true;
+            labelPercentage.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            labelPercentage.ForeColor = Color.White;
+            labelPercentage.Location = new Point(34, 332);
+            labelPercentage.Name = "labelPercentage";
+            labelPercentage.Size = new Size(115, 25);
+            labelPercentage.TabIndex = 15;
+            labelPercentage.Text = "Percentage :";
             // 
             // EditTaskFormModal
             // 
@@ -243,7 +259,6 @@
         #endregion
 
         private ReaLTaiizor.Controls.SpaceClose closeButton;
-        private CustomControls.RJControls.CustomButton buttonReset;
         private CustomControls.RJControls.CustomButton buttonUpdate;
         private ReaLTaiizor.Controls.PoisonComboBox comboBoxPriority;
         private ReaLTaiizor.Controls.PoisonComboBox comboBoxCategory;
@@ -255,5 +270,7 @@
         private Label labelTitle;
         private Label labelHeading;
         private Panel panel1;
+        private Label labelPercentage;
+        private CustomControls.RJControls.CustomTextBox textBoxPercentage;
     }
 }

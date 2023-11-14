@@ -75,6 +75,7 @@
             deleteButton.SizeMode = PictureBoxSizeMode.StretchImage;
             deleteButton.TabIndex = 2;
             deleteButton.TabStop = false;
+            deleteButton.Click += deleteButton_Click;
             // 
             // lblDueDate
             // 

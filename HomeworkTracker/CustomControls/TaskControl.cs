@@ -97,13 +97,14 @@ namespace CustomControlsProject.CustomControls
         {
             DataAccess db = new DataAccess();
             int completed = data.completed == 1 ? 0 : 1;
-            db.toggleCompleted(completed, data.taskID);
+            db.ToggleCompleted(completed, data.taskID);
             OnUpdateParent();
         }
 
         private void editButton_Click(object sender, EventArgs e)
         {
-            EditTaskFormModal editTaskFrom = new();
+            EditTaskFormModal editTaskFrom = new(data);
+            editTaskFrom.FormClosed += childForm_FormClosed;
             editTaskFrom.ShowDialog();
         }
 
@@ -115,5 +116,16 @@ namespace CustomControlsProject.CustomControls
             }
         }
 
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            DataAccess db = new DataAccess();
+            db.RemoveTask(data.taskID);
+            OnUpdateParent();
+        }
+
+        private void childForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            OnUpdateParent();
+        }
     }
 }

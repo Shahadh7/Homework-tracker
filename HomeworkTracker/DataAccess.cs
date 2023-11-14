@@ -155,7 +155,7 @@ namespace HomeworkTracker
             }
         }
 
-        public void toggleCompleted(int completed, int taskID)
+        public void ToggleCompleted(int completed, int taskID)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.connectionvalue("HWTracker")))
             {
@@ -183,6 +183,96 @@ namespace HomeworkTracker
                     MessageBox.Show(ex.Message);
                 }
 
+            }
+        }
+
+        public void RemoveTask(int taskID)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.connectionvalue("HWTracker")))
+            {
+
+                try
+                {
+                    var sql = "DELETE FROM hwtracker.task  WHERE taskID = @taskID";
+                    var affectedRows = connection.Execute(sql, new { taskID = taskID });
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            }
+        }
+
+        public List<Category> getAllCategories()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.connectionvalue("HWTracker")))
+            {
+
+                List<Category> categories = new List<Category>();
+
+                try
+                {
+                    var sql = "SELECT * FROM hwtracker.category WHERE studentID = @studentID";
+
+                    categories = connection.Query<Category>(sql, new { studentID = globalVariables.currentStudent.studentID }).ToList();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                return categories;
+            }
+        }
+
+        public List<ImportanceLevel> getAllImportanceLevels()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.connectionvalue("HWTracker")))
+            {
+
+                List<ImportanceLevel> importanceLevels = new List<ImportanceLevel>();
+
+                try
+                {
+                    var sql = "SELECT * FROM hwtracker.importancelevel";
+                    importanceLevels = connection.Query<ImportanceLevel>(sql).ToList();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                return importanceLevels;
+            }
+        }
+
+        public void UpdateTask(Task task)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.connectionvalue("HWTracker")))
+            {
+
+                try
+                {
+                    var sql = "UPDATE hwtracker.task SET progressPercentage = @progressPercentage, " +
+                               "title= @title, importanceLevelID = @importanceLevelID, dueDate = @dueDate ," +
+                               "categoryID = @categoryID    WHERE taskID = @taskID";
+                    var affectedRows = connection.Execute(sql, task);
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            }
+
+            if(task.progressPercentage == 100)
+            {
+                ToggleCompleted(1, task.taskID);
             }
         }
 

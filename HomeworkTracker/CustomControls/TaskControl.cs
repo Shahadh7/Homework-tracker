@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace CustomControlsProject.CustomControls
 {
-    public partial class task : UserControl
+    public partial class TaskControl : UserControl
     {
-        public task()
+        public TaskControl()
         {
             InitializeComponent();
         }
@@ -24,6 +24,7 @@ namespace CustomControlsProject.CustomControls
         private dynamic data;
         private string importanceLevel;
         private int percentage;
+        private DateTime dueDate;
 
 
         [Category("Custom props")]
@@ -31,6 +32,13 @@ namespace CustomControlsProject.CustomControls
         {
             get { return taskTitle; }
             set { taskTitle = value; lblTask.Text = value; }
+        }
+
+        [Category("Custom props")]
+        public string DueDate
+        {
+            get { return dueDate.ToString(); }
+            set { dueDate = DateTime.Parse(value); lblDueDate.Text = value; }
         }
 
         [Category("Custom props")]
@@ -55,19 +63,19 @@ namespace CustomControlsProject.CustomControls
             {
 
                 importanceLevel = value;
-                if (importanceLevel == "Low")
+                if (importanceLevel == "3")
                 {
                     badge1.BGColorA = Color.Yellow;
                     badge1.BGColorB = Color.Yellow;
                     badge1.ForeColor = Color.Yellow;
                 }
-                else if (importanceLevel == "Medium")
+                else if (importanceLevel == "2")
                 {
                     badge1.BGColorA = Color.Green;
                     badge1.BGColorB = Color.Green;
                     badge1.ForeColor = Color.Green;
                 }
-                else if (importanceLevel == "High")
+                else if (importanceLevel == "1")
                 {
                     badge1.BGColorA = Color.Red;
                     badge1.BGColorB = Color.Red;

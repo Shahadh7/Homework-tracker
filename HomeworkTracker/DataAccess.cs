@@ -72,6 +72,7 @@ namespace HomeworkTracker
                         if(studentExist.password ==  password)
                         {
                             isValid = true;
+                            globalVariables.currentStudent = studentExist;
                         }
                         else
                         {

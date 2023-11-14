@@ -28,84 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            flowLayoutPanel1 = new FlowLayoutPanel();
-            task1 = new CustomControlsProject.CustomControls.task();
-            task2 = new CustomControlsProject.CustomControls.task();
-            task3 = new CustomControlsProject.CustomControls.task();
-            task4 = new CustomControlsProject.CustomControls.task();
-            flowLayoutPanel2 = new FlowLayoutPanel();
+            panelPendingTasks = new FlowLayoutPanel();
+            panelCompletedTasks = new FlowLayoutPanel();
             nightLabel1 = new ReaLTaiizor.Controls.NightLabel();
             nightLabel2 = new ReaLTaiizor.Controls.NightLabel();
-            flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
-            // flowLayoutPanel1
+            // panelPendingTasks
             // 
-            flowLayoutPanel1.BackColor = Color.FromArgb(216, 238, 254);
-            flowLayoutPanel1.Controls.Add(task1);
-            flowLayoutPanel1.Controls.Add(task2);
-            flowLayoutPanel1.Controls.Add(task3);
-            flowLayoutPanel1.Controls.Add(task4);
-            flowLayoutPanel1.Location = new Point(24, 49);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(712, 340);
-            flowLayoutPanel1.TabIndex = 0;
+            panelPendingTasks.BackColor = Color.FromArgb(216, 238, 254);
+            panelPendingTasks.Location = new Point(24, 49);
+            panelPendingTasks.Name = "panelPendingTasks";
+            panelPendingTasks.Size = new Size(712, 340);
+            panelPendingTasks.TabIndex = 0;
             // 
-            // task1
+            // panelCompletedTasks
             // 
-            task1.BackColor = Color.White;
-            task1.Completed = false;
-            task1.Data = null;
-            task1.Location = new Point(10, 10);
-            task1.Margin = new Padding(10, 10, 10, 3);
-            task1.Name = "task1";
-            task1.Size = new Size(690, 68);
-            task1.TabIndex = 0;
-            task1.Title = null;
-            // 
-            // task2
-            // 
-            task2.BackColor = Color.White;
-            task2.Completed = false;
-            task2.Data = null;
-            task2.Location = new Point(10, 91);
-            task2.Margin = new Padding(10, 10, 10, 3);
-            task2.Name = "task2";
-            task2.Size = new Size(690, 68);
-            task2.TabIndex = 1;
-            task2.Title = null;
-            // 
-            // task3
-            // 
-            task3.BackColor = Color.White;
-            task3.Completed = false;
-            task3.Data = null;
-            task3.Location = new Point(10, 172);
-            task3.Margin = new Padding(10, 10, 10, 3);
-            task3.Name = "task3";
-            task3.Size = new Size(690, 68);
-            task3.TabIndex = 2;
-            task3.Title = null;
-            // 
-            // task4
-            // 
-            task4.BackColor = Color.White;
-            task4.Completed = false;
-            task4.Data = null;
-            task4.Location = new Point(10, 253);
-            task4.Margin = new Padding(10, 10, 10, 3);
-            task4.Name = "task4";
-            task4.Size = new Size(690, 68);
-            task4.TabIndex = 3;
-            task4.Title = null;
-            // 
-            // flowLayoutPanel2
-            // 
-            flowLayoutPanel2.BackColor = Color.FromArgb(216, 238, 254);
-            flowLayoutPanel2.Location = new Point(24, 423);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(712, 340);
-            flowLayoutPanel2.TabIndex = 2;
+            panelCompletedTasks.BackColor = Color.FromArgb(216, 238, 254);
+            panelCompletedTasks.Location = new Point(24, 423);
+            panelCompletedTasks.Name = "panelCompletedTasks";
+            panelCompletedTasks.Size = new Size(712, 340);
+            panelCompletedTasks.TabIndex = 2;
             // 
             // nightLabel1
             // 
@@ -140,24 +83,20 @@
             ControlBox = false;
             Controls.Add(nightLabel2);
             Controls.Add(nightLabel1);
-            Controls.Add(flowLayoutPanel2);
-            Controls.Add(flowLayoutPanel1);
+            Controls.Add(panelCompletedTasks);
+            Controls.Add(panelPendingTasks);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Dashboard";
             Text = "Dashboard";
-            flowLayoutPanel1.ResumeLayout(false);
+            Load += Dashboard_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private FlowLayoutPanel flowLayoutPanel1;
-        private FlowLayoutPanel flowLayoutPanel2;
-        private CustomControlsProject.CustomControls.task task1;
-        private CustomControlsProject.CustomControls.task task2;
-        private CustomControlsProject.CustomControls.task task3;
-        private CustomControlsProject.CustomControls.task task4;
+        private FlowLayoutPanel panelPendingTasks;
+        private FlowLayoutPanel panelCompletedTasks;
         private ReaLTaiizor.Controls.NightLabel nightLabel1;
         private ReaLTaiizor.Controls.NightLabel nightLabel2;
     }

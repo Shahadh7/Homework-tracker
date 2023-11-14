@@ -25,7 +25,7 @@
     <Compile Update="CustomControls\CustomRadioButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="CustomControls\Task.cs">
+    <Compile Update="CustomControls\TaskControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="CustomControls\ToggleButton.cs">

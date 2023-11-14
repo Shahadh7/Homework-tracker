@@ -1,6 +1,6 @@
 ﻿namespace CustomControlsProject.CustomControls
 {
-    partial class task
+    partial class TaskControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -31,7 +31,7 @@
             lblTask = new Label();
             toggleCompleted = new ToggleButton();
             deleteButton = new PictureBox();
-            label1 = new Label();
+            lblDueDate = new Label();
             editButton = new PictureBox();
             progressBar = new global::CustomControls.RJControls.CustomProgressBar();
             badge1 = new ReaLTaiizor.Controls.Badge();
@@ -76,14 +76,14 @@
             deleteButton.TabIndex = 2;
             deleteButton.TabStop = false;
             // 
-            // label1
+            // lblDueDate
             // 
-            label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(31, 40);
-            label1.Name = "label1";
-            label1.Size = new Size(67, 20);
-            label1.TabIndex = 3;
-            label1.Text = "dueDate";
+            lblDueDate.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDueDate.Location = new Point(24, 40);
+            lblDueDate.Name = "lblDueDate";
+            lblDueDate.Size = new Size(138, 20);
+            lblDueDate.TabIndex = 3;
+            lblDueDate.Text = "dueDate";
             // 
             // editButton
             // 
@@ -129,7 +129,7 @@
             badge1.Text = "badge1";
             badge1.Value = 0;
             // 
-            // task
+            // TaskControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -137,11 +137,11 @@
             Controls.Add(badge1);
             Controls.Add(progressBar);
             Controls.Add(editButton);
-            Controls.Add(label1);
+            Controls.Add(lblDueDate);
             Controls.Add(deleteButton);
             Controls.Add(toggleCompleted);
             Controls.Add(lblTask);
-            Name = "task";
+            Name = "TaskControl";
             Size = new Size(690, 68);
             ((System.ComponentModel.ISupportInitialize)deleteButton).EndInit();
             ((System.ComponentModel.ISupportInitialize)editButton).EndInit();
@@ -154,7 +154,7 @@
         private Label lblTask;
         private ToggleButton toggleCompleted;
         private PictureBox deleteButton;
-        private Label label1;
+        private Label lblDueDate;
         private PictureBox editButton;
         private global::CustomControls.RJControls.CustomProgressBar progressBar;
         private ReaLTaiizor.Controls.Badge badge1;

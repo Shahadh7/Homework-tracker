@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             flowLayoutPanel1 = new FlowLayoutPanel();
-            task1 = new CustomControlsProject.CustomControls.task();
-            task2 = new CustomControlsProject.CustomControls.task();
-            task3 = new CustomControlsProject.CustomControls.task();
+            task1 = new CustomControlsProject.CustomControls.TaskControl();
+            task2 = new CustomControlsProject.CustomControls.TaskControl();
+            task3 = new CustomControlsProject.CustomControls.TaskControl();
             customTextBox1 = new CustomControls.RJControls.CustomTextBox();
             buttonTaskAdd = new CustomControls.RJControls.CustomButton();
             labelHeading = new Label();
             poisonComboBox1 = new ReaLTaiizor.Controls.PoisonComboBox();
             label1 = new Label();
             flowLayoutPanel2 = new FlowLayoutPanel();
-            task4 = new CustomControlsProject.CustomControls.task();
-            task5 = new CustomControlsProject.CustomControls.task();
-            task6 = new CustomControlsProject.CustomControls.task();
+            task4 = new CustomControlsProject.CustomControls.TaskControl();
+            task5 = new CustomControlsProject.CustomControls.TaskControl();
+            task6 = new CustomControlsProject.CustomControls.TaskControl();
             labelRemaining = new ReaLTaiizor.Controls.FoxLabel();
             labelCompleted = new ReaLTaiizor.Controls.FoxLabel();
             flowLayoutPanel1.SuspendLayout();
@@ -269,16 +269,16 @@
         private FlowLayoutPanel flowLayoutPanel1;
         private CustomControls.RJControls.CustomTextBox customTextBox1;
         private CustomControls.RJControls.CustomButton buttonTaskAdd;
-        private CustomControlsProject.CustomControls.task task1;
-        private CustomControlsProject.CustomControls.task task2;
-        private CustomControlsProject.CustomControls.task task3;
+        private CustomControlsProject.CustomControls.TaskControl task1;
+        private CustomControlsProject.CustomControls.TaskControl task2;
+        private CustomControlsProject.CustomControls.TaskControl task3;
         private Label labelHeading;
         private ReaLTaiizor.Controls.PoisonComboBox poisonComboBox1;
         private Label label1;
         private FlowLayoutPanel flowLayoutPanel2;
-        private CustomControlsProject.CustomControls.task task4;
-        private CustomControlsProject.CustomControls.task task5;
-        private CustomControlsProject.CustomControls.task task6;
+        private CustomControlsProject.CustomControls.TaskControl task4;
+        private CustomControlsProject.CustomControls.TaskControl task5;
+        private CustomControlsProject.CustomControls.TaskControl task6;
         private ReaLTaiizor.Controls.FoxLabel labelRemaining;
         private ReaLTaiizor.Controls.FoxLabel labelCompleted;
     }

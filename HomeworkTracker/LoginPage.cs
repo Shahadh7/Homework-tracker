@@ -2,10 +2,13 @@ namespace HomeworkTracker
 {
     public partial class LoginPage : Form
     {
+
+        bool isLoggedIn;
         public LoginPage()
         {
             InitializeComponent();
             panelSignup.Visible = false;
+            bool isLoggedIn = false;
 
         }
 
@@ -46,11 +49,15 @@ namespace HomeworkTracker
 
             if (isValid)
             {
-                Container obj = new Container();
-                this.Hide();
-                obj.Show();
-                /*DataAccess db = new DataAccess();
-                db.SignUp(username, password);*/
+                DataAccess db = new DataAccess();
+                isLoggedIn = db.Login(username, password);
+
+                if(isLoggedIn)
+                {
+                    Container obj = new Container();
+                    this.Hide();
+                    obj.Show();
+                }
             }
         }
 

@@ -95,5 +95,59 @@ namespace HomeworkTracker
             return isValid;
         }
 
+        public List<Task> GetAllTodaysPendingTasks()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.connectionvalue("HWTracker")))
+            {
+
+                List<Task> tasks = new List<Task>();
+
+                try
+                {
+                    var sqlCheck = "SELECT * FROM hwtracker.task WHERE studentID = @studentID AND dueDate = @currentDate AND completed = @completed";
+
+                    var dateAndTime = DateTime.Now;
+                    var date = dateAndTime.Date;
+                    string currentDate = date.ToShortDateString();
+
+                    tasks = connection.Query<Task>(sqlCheck, new { studentID = globalVariables.currentStudent.studentID, currentDate = currentDate, completed = 0 }).ToList();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                return tasks;
+            }
+        }
+
+        public List<Task> GetAllTodaysCompletedTasks()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.connectionvalue("HWTracker")))
+            {
+
+                List<Task> tasks = new List<Task>();
+
+                try
+                {
+                    var sqlCheck = "SELECT * FROM hwtracker.task WHERE studentID = @studentID AND dueDate = @currentDate AND completed = @completed";
+
+                    var dateAndTime = DateTime.Now;
+                    var date = dateAndTime.Date;
+                    string currentDate = date.ToShortDateString();
+
+                    tasks = connection.Query<Task>(sqlCheck, new { studentID = globalVariables.currentStudent.studentID, currentDate = currentDate, completed = 1 }).ToList();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                return tasks;
+            }
+        }
+
     }
 }

@@ -15,7 +15,7 @@ namespace CustomControlsProject.CustomControls
     public partial class TaskControl : UserControl
     {
 
-        public event EventHandler TaskCompleted;
+        public event EventHandler updateParent;
         public TaskControl()
         {
             InitializeComponent();
@@ -98,7 +98,7 @@ namespace CustomControlsProject.CustomControls
             DataAccess db = new DataAccess();
             int completed = data.completed == 1 ? 0 : 1;
             db.toggleCompleted(completed, data.taskID);
-            OnTaskCompleted();
+            OnUpdateParent();
         }
 
         private void editButton_Click(object sender, EventArgs e)
@@ -107,11 +107,11 @@ namespace CustomControlsProject.CustomControls
             editTaskFrom.ShowDialog();
         }
 
-        private void OnTaskCompleted()
+        private void OnUpdateParent()
         {
-            if (TaskCompleted != null)
+            if (updateParent != null)
             {
-                TaskCompleted(this, EventArgs.Empty);
+                updateParent(this, EventArgs.Empty);
             }
         }
 

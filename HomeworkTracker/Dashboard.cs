@@ -40,7 +40,7 @@ namespace HomeworkTracker
                     taskControl.ImportanceLevel = task.importanceLevelID.ToString();
                     taskControl.Data = task;
                     panelPendingTasks.Controls.Add(taskControl);
-                    taskControl.TaskCompleted += OnTaskCompleted;
+                    taskControl.updateParent += OnUpdateParent;
                 }
             }
             else
@@ -71,7 +71,7 @@ namespace HomeworkTracker
                     taskControl.ImportanceLevel = task.importanceLevelID.ToString();
                     taskControl.Data = task;
                     panelCompletedTasks.Controls.Add(taskControl);
-                    taskControl.TaskCompleted += OnTaskCompleted;
+                    taskControl.updateParent += OnUpdateParent;
                 }
             }
             else
@@ -90,7 +90,7 @@ namespace HomeworkTracker
             fetchAllCompletedTasks();
         }
 
-        private void OnTaskCompleted(object sender, EventArgs e)
+        private void OnUpdateParent(object sender, EventArgs e)
         {
             fetchAllPendingTasks();
             fetchAllCompletedTasks();

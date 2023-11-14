@@ -7,7 +7,7 @@
     <Compile Update="CategoryManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Container.cs">
+    <Compile Update="AppContainer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="CustomControls\CustomTextBox.cs">

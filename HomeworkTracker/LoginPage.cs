@@ -54,7 +54,7 @@ namespace HomeworkTracker
 
                 if(isLoggedIn)
                 {
-                    Container obj = new Container();
+                    AppContainer obj = new AppContainer();
                     this.Hide();
                     obj.Show();
                 }

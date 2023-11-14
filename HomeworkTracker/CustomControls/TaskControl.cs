@@ -8,11 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Task = HomeworkTracker.Task;
 
 namespace CustomControlsProject.CustomControls
 {
     public partial class TaskControl : UserControl
     {
+
+        public event EventHandler TaskCompleted;
         public TaskControl()
         {
             InitializeComponent();
@@ -92,7 +95,10 @@ namespace CustomControlsProject.CustomControls
 
         private void toggleCompleted_MouseClick(object sender, MouseEventArgs e)
         {
-            MessageBox.Show("toggled");
+            DataAccess db = new DataAccess();
+            int completed = data.completed == 1 ? 0 : 1;
+            db.toggleCompleted(completed, data.taskID);
+            OnTaskCompleted();
         }
 
         private void editButton_Click(object sender, EventArgs e)
@@ -100,5 +106,14 @@ namespace CustomControlsProject.CustomControls
             EditTaskFormModal editTaskFrom = new();
             editTaskFrom.ShowDialog();
         }
+
+        private void OnTaskCompleted()
+        {
+            if (TaskCompleted != null)
+            {
+                TaskCompleted(this, EventArgs.Empty);
+            }
+        }
+
     }
 }

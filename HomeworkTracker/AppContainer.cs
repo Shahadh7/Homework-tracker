@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace HomeworkTracker
 {
-    public partial class Container : Form
+    public partial class AppContainer : Form
     {
         Dashboard? dashboard;
         TaskManagement? taskManagement;
         CategoryManagement? categoryManagement;
         ProgressTracking? progressTracking;
 
-        public Container()
+        public AppContainer()
         {
             InitializeComponent();
             showDashboard();

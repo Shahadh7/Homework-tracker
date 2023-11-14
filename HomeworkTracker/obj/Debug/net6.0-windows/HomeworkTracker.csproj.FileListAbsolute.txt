@@ -1,7 +1,6 @@
 C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\obj\Debug\net6.0-windows\HomeworkTracker.csproj.AssemblyReference.cache
 C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\obj\Debug\net6.0-windows\HomeworkTracker.AddNewTaskFormModal.resources
 C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\obj\Debug\net6.0-windows\HomeworkTracker.CategoryManagement.resources
-C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\obj\Debug\net6.0-windows\HomeworkTracker.Container.resources
 C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\obj\Debug\net6.0-windows\CustomControls.RJControls.CustomTextBox.resources
 C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\obj\Debug\net6.0-windows\HomeworkTracker.Dashboard.resources
 C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\obj\Debug\net6.0-windows\HomeworkTracker.LoginPage.resources
@@ -37,3 +36,4 @@ C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\bin\Debug\net6.0-window
 C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\bin\Debug\net6.0-windows\Dapper.dll
 C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\obj\Debug\net6.0-windows\CustomControlsProject.CustomControls.TaskControl.resources
+C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\obj\Debug\net6.0-windows\HomeworkTracker.AppContainer.resources

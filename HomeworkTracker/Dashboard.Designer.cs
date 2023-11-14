@@ -36,6 +36,7 @@
             // 
             // panelPendingTasks
             // 
+            panelPendingTasks.AutoScroll = true;
             panelPendingTasks.BackColor = Color.FromArgb(216, 238, 254);
             panelPendingTasks.Location = new Point(24, 49);
             panelPendingTasks.Name = "panelPendingTasks";
@@ -44,6 +45,7 @@
             // 
             // panelCompletedTasks
             // 
+            panelCompletedTasks.AutoScroll = true;
             panelCompletedTasks.BackColor = Color.FromArgb(216, 238, 254);
             panelCompletedTasks.Location = new Point(24, 423);
             panelCompletedTasks.Name = "panelCompletedTasks";

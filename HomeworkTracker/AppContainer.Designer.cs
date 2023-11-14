@@ -1,6 +1,6 @@
 ﻿namespace HomeworkTracker
 {
-    partial class Container
+    partial class AppContainer
     {
         /// <summary>
         /// Required designer variable.

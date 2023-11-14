@@ -5,11 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dapper;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace HomeworkTracker
 {
     public class DataAccess
     {
+
+        //User Authentication
         public void SignUp(string username, string password)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.connectionvalue("HWTracker")))
@@ -96,6 +99,8 @@ namespace HomeworkTracker
             return isValid;
         }
 
+
+        //Task Management
         public List<Task> GetAllTodaysPendingTasks()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.connectionvalue("HWTracker")))
@@ -147,6 +152,37 @@ namespace HomeworkTracker
                 }
 
                 return tasks;
+            }
+        }
+
+        public void toggleCompleted(int completed, int taskID)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.connectionvalue("HWTracker")))
+            {
+
+                try
+                {
+                    int progressPercentage;
+                    if (completed == 1)
+                    {
+                        progressPercentage = 100;
+                    }
+                    else
+                    {
+                        progressPercentage = 0;
+                    }
+                    
+                    var sql = "UPDATE hwtracker.task SET completed = @completed, progressPercentage = @progressPercentage WHERE taskID = @taskID";
+
+                    var affectedRows = connection.Execute(sql, new { completed = completed , taskID = taskID, progressPercentage = progressPercentage });
+
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
             }
         }
 

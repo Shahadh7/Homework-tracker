@@ -273,7 +273,25 @@ namespace HomeworkTracker
             }
         }
 
+        public void AddTask(Task task)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.connectionvalue("HWTracker")))
+            {
 
+                try
+                {
+                    var sql = "INSERT INTO hwtracker.task (title, dueDate, importanceLevelID, progressPercentage, completed, studentID, categoryID)" +
+                                "VALUES (@title, @dueDate, @importanceLevelID, @progressPercentage, @completed, @studentID, @categoryID)";
+                    var affectedRows = connection.Execute(sql, task);
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            }
+        }
 
 
         //Category related functions

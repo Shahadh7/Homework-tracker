@@ -116,6 +116,7 @@ namespace HomeworkTracker
         private void buttonTaskAdd_Click(object sender, EventArgs e)
         {
             AddNewTaskFormModal addNewTaskForm = new AddNewTaskFormModal();
+            addNewTaskForm.FormClosed += childForm_FormClosed;
             addNewTaskForm.ShowDialog();
         }
 
@@ -180,7 +181,7 @@ namespace HomeworkTracker
             if (textBoxSearch.Text.Length > 0)
             {
                 List<Task> filteredtasks = pendingTasks
-                .Where(item => item.title.ToLower().Contains(textBoxSearch.Text.ToLower()))
+                .Where(item => item.title.ToLower().Contains(textBoxSearch.Text.Trim().ToLower()))
                 .ToList();
 
                 panelPendingTasks.Controls.Clear();
@@ -223,6 +224,11 @@ namespace HomeworkTracker
             {
                 fetchAllPendingTasks();
             }
+        }
+
+        private void childForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            fetchAllPendingTasks();
         }
     }
 }

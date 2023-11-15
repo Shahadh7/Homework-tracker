@@ -30,7 +30,6 @@
         {
             panel1 = new Panel();
             closeButton = new ReaLTaiizor.Controls.SpaceClose();
-            buttonReset = new CustomControls.RJControls.CustomButton();
             buttonSave = new CustomControls.RJControls.CustomButton();
             comboBoxPriority = new ReaLTaiizor.Controls.PoisonComboBox();
             comboBoxCategory = new ReaLTaiizor.Controls.PoisonComboBox();
@@ -49,7 +48,6 @@
             panel1.BackColor = Color.FromArgb(9, 64, 103);
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(closeButton);
-            panel1.Controls.Add(buttonReset);
             panel1.Controls.Add(buttonSave);
             panel1.Controls.Add(comboBoxPriority);
             panel1.Controls.Add(comboBoxCategory);
@@ -83,25 +81,6 @@
             closeButton.Text = "x";
             closeButton.Transparent = false;
             // 
-            // buttonReset
-            // 
-            buttonReset.BackColor = Color.Gray;
-            buttonReset.BackgroundColor = Color.Gray;
-            buttonReset.BorderColor = Color.PaleVioletRed;
-            buttonReset.BorderRadius = 5;
-            buttonReset.BorderSize = 0;
-            buttonReset.FlatAppearance.BorderSize = 0;
-            buttonReset.FlatStyle = FlatStyle.Flat;
-            buttonReset.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonReset.ForeColor = Color.White;
-            buttonReset.Location = new Point(299, 384);
-            buttonReset.Name = "buttonReset";
-            buttonReset.Size = new Size(150, 40);
-            buttonReset.TabIndex = 13;
-            buttonReset.Text = "Reset";
-            buttonReset.TextColor = Color.White;
-            buttonReset.UseVisualStyleBackColor = false;
-            // 
             // buttonSave
             // 
             buttonSave.BackColor = Color.LimeGreen;
@@ -120,6 +99,7 @@
             buttonSave.Text = "Save";
             buttonSave.TextColor = Color.White;
             buttonSave.UseVisualStyleBackColor = false;
+            buttonSave.Click += buttonSave_Click;
             // 
             // comboBoxPriority
             // 
@@ -253,7 +233,6 @@
         private ReaLTaiizor.Controls.PoisonComboBox comboBoxCategory;
         private ReaLTaiizor.Controls.PoisonDateTime dateTimeDueDate;
         private CustomControls.RJControls.CustomTextBox textBoxTitle;
-        private CustomControls.RJControls.CustomButton buttonReset;
         private CustomControls.RJControls.CustomButton buttonSave;
         private ReaLTaiizor.Controls.SpaceClose closeButton;
     }

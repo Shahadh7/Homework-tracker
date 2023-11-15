@@ -32,9 +32,10 @@
             dgvCategoryTable = new DataGridView();
             count = new DataGridViewTextBoxColumn();
             category = new DataGridViewTextBoxColumn();
-            customTextBox1 = new CustomControls.RJControls.CustomTextBox();
+            textBoxSearch = new CustomControls.RJControls.CustomTextBox();
             buttonAddCategory = new CustomControls.RJControls.CustomButton();
             buttonDeleteCategory = new CustomControls.RJControls.CustomButton();
+            buttonSearch = new CustomControls.RJControls.CustomButton();
             ((System.ComponentModel.ISupportInitialize)dgvCategoryTable).BeginInit();
             SuspendLayout();
             // 
@@ -57,7 +58,6 @@
             dgvCategoryTable.RowTemplate.Height = 25;
             dgvCategoryTable.Size = new Size(643, 524);
             dgvCategoryTable.TabIndex = 7;
-            dgvCategoryTable.RowHeaderMouseClick += dgvCategoryTable_RowHeaderMouseClick;
             dgvCategoryTable.RowHeaderMouseDoubleClick += dgvCategoryTable_RowHeaderMouseDoubleClick;
             // 
             // count
@@ -74,26 +74,27 @@
             category.ReadOnly = true;
             category.Width = 300;
             // 
-            // customTextBox1
+            // textBoxSearch
             // 
-            customTextBox1.BackColor = SystemColors.Window;
-            customTextBox1.BorderColor = Color.Transparent;
-            customTextBox1.BorderFocusColor = Color.CornflowerBlue;
-            customTextBox1.BorderRadius = 0;
-            customTextBox1.BorderSize = 2;
-            customTextBox1.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point);
-            customTextBox1.ForeColor = Color.FromArgb(64, 64, 64);
-            customTextBox1.Location = new Point(59, 93);
-            customTextBox1.Margin = new Padding(4);
-            customTextBox1.Multiline = false;
-            customTextBox1.Name = "customTextBox1";
-            customTextBox1.Padding = new Padding(10, 7, 10, 7);
-            customTextBox1.PasswordChar = false;
-            customTextBox1.PlaceholderColor = Color.DarkGray;
-            customTextBox1.PlaceholderText = "Search category";
-            customTextBox1.Size = new Size(250, 31);
-            customTextBox1.TabIndex = 8;
-            customTextBox1.UnderlinedStyle = false;
+            textBoxSearch.BackColor = SystemColors.Window;
+            textBoxSearch.BorderColor = Color.Transparent;
+            textBoxSearch.BorderFocusColor = Color.CornflowerBlue;
+            textBoxSearch.BorderRadius = 0;
+            textBoxSearch.BorderSize = 2;
+            textBoxSearch.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxSearch.ForeColor = Color.FromArgb(64, 64, 64);
+            textBoxSearch.Location = new Point(59, 93);
+            textBoxSearch.Margin = new Padding(4);
+            textBoxSearch.Multiline = false;
+            textBoxSearch.Name = "textBoxSearch";
+            textBoxSearch.Padding = new Padding(10, 7, 10, 7);
+            textBoxSearch.PasswordChar = false;
+            textBoxSearch.PlaceholderColor = Color.DarkGray;
+            textBoxSearch.PlaceholderText = "Search category";
+            textBoxSearch.Size = new Size(250, 31);
+            textBoxSearch.TabIndex = 8;
+            textBoxSearch.UnderlinedStyle = false;
+            textBoxSearch.KeyPress += textBoxSearch_KeyPress;
             // 
             // buttonAddCategory
             // 
@@ -135,6 +136,26 @@
             buttonDeleteCategory.UseVisualStyleBackColor = false;
             buttonDeleteCategory.Click += buttonDeleteCategory_Click;
             // 
+            // buttonSearch
+            // 
+            buttonSearch.BackColor = Color.FromArgb(239, 69, 101);
+            buttonSearch.BackgroundColor = Color.FromArgb(239, 69, 101);
+            buttonSearch.BorderColor = Color.PaleVioletRed;
+            buttonSearch.BorderRadius = 5;
+            buttonSearch.BorderSize = 0;
+            buttonSearch.FlatAppearance.BorderSize = 0;
+            buttonSearch.FlatStyle = FlatStyle.Flat;
+            buttonSearch.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonSearch.ForeColor = Color.White;
+            buttonSearch.Location = new Point(328, 93);
+            buttonSearch.Name = "buttonSearch";
+            buttonSearch.Size = new Size(79, 31);
+            buttonSearch.TabIndex = 12;
+            buttonSearch.Text = "Search";
+            buttonSearch.TextColor = Color.White;
+            buttonSearch.UseVisualStyleBackColor = false;
+            buttonSearch.Click += buttonSearch_Click;
+            // 
             // CategoryManagement
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -142,9 +163,10 @@
             BackColor = Color.FromArgb(216, 238, 254);
             ClientSize = new Size(760, 783);
             ControlBox = false;
+            Controls.Add(buttonSearch);
             Controls.Add(buttonDeleteCategory);
             Controls.Add(buttonAddCategory);
-            Controls.Add(customTextBox1);
+            Controls.Add(textBoxSearch);
             Controls.Add(dgvCategoryTable);
             Controls.Add(labelHeading);
             FormBorderStyle = FormBorderStyle.None;
@@ -161,8 +183,9 @@
         private DataGridView dgvCategoryTable;
         private DataGridViewTextBoxColumn count;
         private DataGridViewTextBoxColumn category;
-        private CustomControls.RJControls.CustomTextBox customTextBox1;
+        private CustomControls.RJControls.CustomTextBox textBoxSearch;
         private CustomControls.RJControls.CustomButton buttonAddCategory;
         private CustomControls.RJControls.CustomButton buttonDeleteCategory;
+        private CustomControls.RJControls.CustomButton buttonSearch;
     }
 }

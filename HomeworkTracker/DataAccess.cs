@@ -457,7 +457,6 @@ namespace HomeworkTracker
             return isExist;
         }
 
-
         //Imporatance Level related functions
         public List<ImportanceLevel> getAllImportanceLevels()
         {

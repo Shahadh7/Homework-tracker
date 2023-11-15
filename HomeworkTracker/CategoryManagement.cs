@@ -16,8 +16,6 @@ namespace HomeworkTracker
 
         List<Category> categories;
 
-        int currentlySelectedIndex = -1;
-
         public CategoryManagement()
         {
             InitializeComponent();
@@ -57,44 +55,85 @@ namespace HomeworkTracker
 
         private void dgvCategoryTable_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            Category seletedCategory = categories[e.RowIndex];
+            Category seletedCategory = new Category();
+
+            if (dgvCategoryTable.SelectedRows.Count != 0)
+            {
+                DataGridViewRow row = dgvCategoryTable.SelectedRows[0];
+                string catName = (string)row.Cells["Category"].Value;
+                seletedCategory = categories.Find(item => item.name == catName);
+
+            }
             EditCategoryFormModal editCategory = new(seletedCategory);
             editCategory.FormClosed += childForm_FormClosed;
             editCategory.ShowDialog();
         }
 
-
-
-        private void dgvCategoryTable_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            currentlySelectedIndex = e.RowIndex;
-        }
-
         private void buttonDeleteCategory_Click(object sender, EventArgs e)
         {
-            
-            if (currentlySelectedIndex != -1)
-            {
-                int categoryID = categories[currentlySelectedIndex].categoryID;
-                DataAccess db = new DataAccess();
-                bool isExist = db.isTaskExistsWithCategoryID(categoryID);
 
-                if (!isExist)
+            if (dgvCategoryTable.SelectedRows.Count != 0)
+            {
+                DataGridViewRow row = dgvCategoryTable.SelectedRows[0];
+                string catName = (string)row.Cells["Category"].Value;
+                var category = categories.Find(item => item.name == catName);
+
+                if (category != null)
                 {
-                    db.RemoveCategory(categoryID);
-                    fetchAllAvailableCategories();
+                    DataAccess db = new DataAccess();
+                    bool isExist = db.isTaskExistsWithCategoryID(category.categoryID);
+
+                    if (!isExist)
+                    {
+                        db.RemoveCategory(category.categoryID);
+                        fetchAllAvailableCategories();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Unable to delete category: Tasks are still associated with this category. Please remove all tasks from this category before attempting to delete it.");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Unable to delete category: Tasks are still associated with this category. Please remove all tasks from this category before attempting to delete it.");
-                }
+                
 
             }
             else
             {
                 MessageBox.Show("Please select a row to delete");
             }
-            currentlySelectedIndex = -1;
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+
+            string searchTerm = textBoxSearch.Text;
+            if (searchTerm != string.Empty)
+            {
+                
+                List<Category> result = categories.FindAll(item => item.name.ToLower().Contains(searchTerm.ToLower()));
+                if (categories != null)
+                {
+                    int count = 0;
+                    dgvCategoryTable.Rows.Clear();
+                    foreach (Category category in result)
+                    {
+                        dgvCategoryTable.Rows.Add(count + 1, category.name);
+                        count++;
+                    }
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Search text is empty.");
+            }
+        }
+
+        private void textBoxSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(textBoxSearch.Text.Length == 0)
+            {
+                fetchAllAvailableCategories();
+            }
         }
     }
 }

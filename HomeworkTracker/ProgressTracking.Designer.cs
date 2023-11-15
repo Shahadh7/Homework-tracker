@@ -38,11 +38,11 @@
             badge1 = new ReaLTaiizor.Controls.Badge();
             parrotPieGraph1 = new ReaLTaiizor.Controls.ParrotPieGraph();
             materialCard1 = new ReaLTaiizor.Controls.MaterialCard();
-            foxBigLabel1 = new ReaLTaiizor.Controls.FoxBigLabel();
-            foxBigLabel2 = new ReaLTaiizor.Controls.FoxBigLabel();
-            completedCount = new Label();
-            RemainingCount = new Label();
             todaysDate2 = new Label();
+            RemainingCount = new Label();
+            completedCount = new Label();
+            foxBigLabel2 = new ReaLTaiizor.Controls.FoxBigLabel();
+            foxBigLabel1 = new ReaLTaiizor.Controls.FoxBigLabel();
             pieChartCard.SuspendLayout();
             materialCard1.SuspendLayout();
             SuspendLayout();
@@ -166,17 +166,36 @@
             materialCard1.Size = new Size(286, 233);
             materialCard1.TabIndex = 9;
             // 
-            // foxBigLabel1
+            // todaysDate2
             // 
-            foxBigLabel1.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            foxBigLabel1.ForeColor = Color.FromArgb(76, 88, 100);
-            foxBigLabel1.Line = ReaLTaiizor.Controls.FoxBigLabel.Direction.Bottom;
-            foxBigLabel1.LineColor = Color.FromArgb(200, 200, 200);
-            foxBigLabel1.Location = new Point(27, 43);
-            foxBigLabel1.Name = "foxBigLabel1";
-            foxBigLabel1.Size = new Size(165, 51);
-            foxBigLabel1.TabIndex = 0;
-            foxBigLabel1.Text = "Completed : ";
+            todaysDate2.AutoSize = true;
+            todaysDate2.Location = new Point(27, 14);
+            todaysDate2.Name = "todaysDate2";
+            todaysDate2.Size = new Size(30, 15);
+            todaysDate2.TabIndex = 6;
+            todaysDate2.Text = "date";
+            // 
+            // RemainingCount
+            // 
+            RemainingCount.AutoSize = true;
+            RemainingCount.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            RemainingCount.ForeColor = Color.FromArgb(76, 88, 100);
+            RemainingCount.Location = new Point(220, 145);
+            RemainingCount.Name = "RemainingCount";
+            RemainingCount.Size = new Size(33, 37);
+            RemainingCount.TabIndex = 3;
+            RemainingCount.Text = "0";
+            // 
+            // completedCount
+            // 
+            completedCount.AutoSize = true;
+            completedCount.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            completedCount.ForeColor = Color.FromArgb(76, 88, 100);
+            completedCount.Location = new Point(219, 48);
+            completedCount.Name = "completedCount";
+            completedCount.Size = new Size(33, 37);
+            completedCount.TabIndex = 2;
+            completedCount.Text = "0";
             // 
             // foxBigLabel2
             // 
@@ -190,36 +209,17 @@
             foxBigLabel2.TabIndex = 1;
             foxBigLabel2.Text = "Remaining : ";
             // 
-            // completedCount
+            // foxBigLabel1
             // 
-            completedCount.AutoSize = true;
-            completedCount.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            completedCount.ForeColor = Color.FromArgb(76, 88, 100);
-            completedCount.Location = new Point(219, 48);
-            completedCount.Name = "completedCount";
-            completedCount.Size = new Size(33, 37);
-            completedCount.TabIndex = 2;
-            completedCount.Text = "0";
-            // 
-            // RemainingCount
-            // 
-            RemainingCount.AutoSize = true;
-            RemainingCount.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            RemainingCount.ForeColor = Color.FromArgb(76, 88, 100);
-            RemainingCount.Location = new Point(220, 145);
-            RemainingCount.Name = "RemainingCount";
-            RemainingCount.Size = new Size(33, 37);
-            RemainingCount.TabIndex = 3;
-            RemainingCount.Text = "0";
-            // 
-            // todaysDate2
-            // 
-            todaysDate2.AutoSize = true;
-            todaysDate2.Location = new Point(27, 14);
-            todaysDate2.Name = "todaysDate2";
-            todaysDate2.Size = new Size(30, 15);
-            todaysDate2.TabIndex = 6;
-            todaysDate2.Text = "date";
+            foxBigLabel1.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            foxBigLabel1.ForeColor = Color.FromArgb(76, 88, 100);
+            foxBigLabel1.Line = ReaLTaiizor.Controls.FoxBigLabel.Direction.Bottom;
+            foxBigLabel1.LineColor = Color.FromArgb(200, 200, 200);
+            foxBigLabel1.Location = new Point(27, 43);
+            foxBigLabel1.Name = "foxBigLabel1";
+            foxBigLabel1.Size = new Size(165, 51);
+            foxBigLabel1.TabIndex = 0;
+            foxBigLabel1.Text = "Completed : ";
             // 
             // ProgressTracking
             // 
@@ -234,6 +234,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "ProgressTracking";
             Text = "ProgressTracking";
+            Load += ProgressTracking_Load;
             pieChartCard.ResumeLayout(false);
             pieChartCard.PerformLayout();
             materialCard1.ResumeLayout(false);

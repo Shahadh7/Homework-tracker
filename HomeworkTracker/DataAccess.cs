@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Dapper;
 using System.Data;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Dapper;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace HomeworkTracker
 {
@@ -293,6 +288,62 @@ namespace HomeworkTracker
             }
         }
 
+        public int completedTaskCount()
+        {
+            int count = 0;
+
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.connectionvalue("HWTracker")))
+            {
+
+                try
+                {
+                    var sql = "SELECT COUNT(taskID) as taskCount FROM hwtracker.task WHERE completed = 1;";
+                    var task = connection.QueryFirst(sql);
+                    if(task != null)
+                    {
+                        count = task.taskCount;
+                    }
+                    
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            }
+
+            return count;
+        }
+
+        public int remainingTaskCount()
+        {
+            int count = 0;
+
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.connectionvalue("HWTracker")))
+            {
+
+                try
+                {
+                    var sql = "SELECT COUNT(taskID) as taskCount FROM hwtracker.task WHERE completed = 0;";
+                    var task = connection.QueryFirst(sql);
+                    if (task != null)
+                    {
+                        count = task.taskCount;
+                    }
+
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            }
+
+            return count;
+        }
+
 
         //Category related functions
         public List<Category> getAllCategories()
@@ -373,6 +424,37 @@ namespace HomeworkTracker
                 }
 
             }
+        }
+
+        public bool isTaskExistsWithCategoryID(int categoryID)
+        {
+            bool isExist = false;
+
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.connectionvalue("HWTracker")))
+            {
+
+                try
+                {
+                    var sqlCheck = "SELECT * FROM hwtracker.task WHERE categoryID = @categoryID";
+
+                    var categories = connection.Query<Category>(sqlCheck, new { categoryID = categoryID});
+
+                    if (categories.Any())
+                    {
+                        isExist = true;
+                    }
+                    else
+                    {
+                        isExist = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+
+            return isExist;
         }
 
 

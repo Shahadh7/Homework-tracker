@@ -4,9 +4,6 @@
     <Compile Update="AddNewCategoryFormModal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="CategoryManagement.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="AppContainer.cs">
       <SubType>Form</SubType>
     </Compile>

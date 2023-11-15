@@ -30,7 +30,6 @@
         {
             panel1 = new Panel();
             closeButton = new ReaLTaiizor.Controls.SpaceClose();
-            buttonReset = new CustomControls.RJControls.CustomButton();
             buttonUpdate = new CustomControls.RJControls.CustomButton();
             textBoxCategory = new CustomControls.RJControls.CustomTextBox();
             labelCategoryName = new Label();
@@ -42,7 +41,6 @@
             // 
             panel1.BackColor = Color.FromArgb(9, 64, 103);
             panel1.Controls.Add(closeButton);
-            panel1.Controls.Add(buttonReset);
             panel1.Controls.Add(buttonUpdate);
             panel1.Controls.Add(textBoxCategory);
             panel1.Controls.Add(labelCategoryName);
@@ -70,25 +68,6 @@
             closeButton.Text = "x";
             closeButton.Transparent = false;
             // 
-            // buttonReset
-            // 
-            buttonReset.BackColor = Color.Gray;
-            buttonReset.BackgroundColor = Color.Gray;
-            buttonReset.BorderColor = Color.PaleVioletRed;
-            buttonReset.BorderRadius = 5;
-            buttonReset.BorderSize = 0;
-            buttonReset.FlatAppearance.BorderSize = 0;
-            buttonReset.FlatStyle = FlatStyle.Flat;
-            buttonReset.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonReset.ForeColor = Color.White;
-            buttonReset.Location = new Point(34, 173);
-            buttonReset.Name = "buttonReset";
-            buttonReset.Size = new Size(171, 40);
-            buttonReset.TabIndex = 25;
-            buttonReset.Text = "Reset";
-            buttonReset.TextColor = Color.White;
-            buttonReset.UseVisualStyleBackColor = false;
-            // 
             // buttonUpdate
             // 
             buttonUpdate.BackColor = Color.LimeGreen;
@@ -107,6 +86,7 @@
             buttonUpdate.Text = "Save";
             buttonUpdate.TextColor = Color.White;
             buttonUpdate.UseVisualStyleBackColor = false;
+            buttonUpdate.Click += buttonUpdate_Click;
             // 
             // textBoxCategory
             // 
@@ -170,7 +150,6 @@
 
         private Panel panel1;
         private ReaLTaiizor.Controls.SpaceClose closeButton;
-        private CustomControls.RJControls.CustomButton buttonReset;
         private CustomControls.RJControls.CustomButton buttonUpdate;
         private CustomControls.RJControls.CustomTextBox textBoxCategory;
         private Label labelCategoryName;

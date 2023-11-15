@@ -318,6 +318,63 @@ namespace HomeworkTracker
             }
         }
 
+        public void AddCategory(Category category)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.connectionvalue("HWTracker")))
+            {
+
+                try
+                {
+                    var sql = "INSERT INTO hwtracker.category (name, studentID) VALUES (@name,@studentID)";
+                    var affectedRows = connection.Execute(sql, category);
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            }
+        }
+
+        public void UpdateCategory(Category category)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.connectionvalue("HWTracker")))
+            {
+
+                try
+                {
+                    var sql = "UPDATE hwtracker.category SET name = @name WHERE categoryID = @categoryID";
+                    var affectedRows = connection.Execute(sql, category);
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            }
+        }
+
+        public void RemoveCategory(int categoryID)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.connectionvalue("HWTracker")))
+            {
+
+                try
+                {
+                    var sql = "DELETE FROM hwtracker.category  WHERE categoryID = @categoryID";
+                    var affectedRows = connection.Execute(sql, new { categoryID = categoryID });
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            }
+        }
+
 
         //Imporatance Level related functions
         public List<ImportanceLevel> getAllImportanceLevels()
@@ -341,8 +398,6 @@ namespace HomeworkTracker
                 return importanceLevels;
             }
         }
-
-        
 
     }
 }

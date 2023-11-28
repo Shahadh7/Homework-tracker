@@ -44,6 +44,7 @@
             foxBigLabel2 = new ReaLTaiizor.Controls.FoxBigLabel();
             foxBigLabel1 = new ReaLTaiizor.Controls.FoxBigLabel();
             flpTasksList = new FlowLayoutPanel();
+            nightLabel1 = new ReaLTaiizor.Controls.NightLabel();
             pieChartCard.SuspendLayout();
             materialCard1.SuspendLayout();
             SuspendLayout();
@@ -224,10 +225,23 @@
             // 
             // flpTasksList
             // 
-            flpTasksList.Location = new Point(12, 362);
+            flpTasksList.AutoScroll = true;
+            flpTasksList.Location = new Point(12, 371);
             flpTasksList.Name = "flpTasksList";
             flpTasksList.Size = new Size(736, 400);
             flpTasksList.TabIndex = 10;
+            // 
+            // nightLabel1
+            // 
+            nightLabel1.AutoSize = true;
+            nightLabel1.BackColor = Color.Transparent;
+            nightLabel1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            nightLabel1.ForeColor = Color.FromArgb(114, 118, 127);
+            nightLabel1.Location = new Point(15, 345);
+            nightLabel1.Name = "nightLabel1";
+            nightLabel1.Size = new Size(70, 21);
+            nightLabel1.TabIndex = 11;
+            nightLabel1.Text = "All Tasks";
             // 
             // ProgressTracking
             // 
@@ -236,6 +250,7 @@
             BackColor = Color.FromArgb(216, 238, 254);
             ClientSize = new Size(760, 783);
             ControlBox = false;
+            Controls.Add(nightLabel1);
             Controls.Add(flpTasksList);
             Controls.Add(materialCard1);
             Controls.Add(pieChartCard);
@@ -269,5 +284,6 @@
         private ReaLTaiizor.Controls.FoxBigLabel foxBigLabel2;
         private ReaLTaiizor.Controls.FoxBigLabel foxBigLabel1;
         private FlowLayoutPanel flpTasksList;
+        private ReaLTaiizor.Controls.NightLabel nightLabel1;
     }
 }

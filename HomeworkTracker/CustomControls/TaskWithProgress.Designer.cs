@@ -32,6 +32,7 @@
             lblDueDate = new Label();
             progressBar = new ProgressBar();
             editBtn = new PictureBox();
+            percentageLabel = new ReaLTaiizor.Controls.SpaceLabel();
             ((System.ComponentModel.ISupportInitialize)editBtn).BeginInit();
             SuspendLayout();
             // 
@@ -56,7 +57,7 @@
             // 
             // progressBar
             // 
-            progressBar.Location = new Point(435, 21);
+            progressBar.Location = new Point(435, 25);
             progressBar.Name = "progressBar";
             progressBar.Size = new Size(193, 23);
             progressBar.TabIndex = 2;
@@ -72,11 +73,25 @@
             editBtn.TabStop = false;
             editBtn.Click += editBtn_Click;
             // 
+            // percentageLabel
+            // 
+            percentageLabel.Customization = "/v7+/yoqKv8=";
+            percentageLabel.Font = new Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            percentageLabel.Image = null;
+            percentageLabel.Location = new Point(587, 7);
+            percentageLabel.Name = "percentageLabel";
+            percentageLabel.NoRounding = false;
+            percentageLabel.Size = new Size(41, 17);
+            percentageLabel.TabIndex = 11;
+            percentageLabel.TextAlignment = HorizontalAlignment.Center;
+            percentageLabel.Transparent = false;
+            // 
             // TaskWithProgress
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(percentageLabel);
             Controls.Add(editBtn);
             Controls.Add(progressBar);
             Controls.Add(lblDueDate);
@@ -94,5 +109,6 @@
         private Label lblDueDate;
         private ProgressBar progressBar;
         private PictureBox editBtn;
+        private ReaLTaiizor.Controls.SpaceLabel percentageLabel;
     }
 }

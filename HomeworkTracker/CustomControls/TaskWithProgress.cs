@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CustomControlsProject.CustomControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -41,7 +42,7 @@ namespace HomeworkTracker.CustomControls
         public int Percentage
         {
             get { return percentage; }
-            set { percentage = value; progressBar.Value = value; }
+            set { percentage = value; progressBar.Value = value; percentageLabel.Text = value.ToString() + "%"; }
         }
 
         public dynamic Data
@@ -52,7 +53,24 @@ namespace HomeworkTracker.CustomControls
 
         private void editBtn_Click(object sender, EventArgs e)
         {
-
+            EditProgress formEdit = new(data);
+            formEdit.FormClosed += childForm_FormClosed;
+            formEdit.ShowDialog();
         }
+
+        private void OnUpdateParent()
+        {
+            if (updateParent != null)
+            {
+                updateParent(this, EventArgs.Empty);
+            }
+        }
+
+        private void childForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            OnUpdateParent();
+        }
+
+
     }
 }

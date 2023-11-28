@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CustomControlsProject.CustomControls;
+using HomeworkTracker.CustomControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -49,11 +51,12 @@ namespace HomeworkTracker
             getCompletedCount();
             getRemainingCount();
             setGraphValues();
+            getAllTasks();
         }
 
         private void setGraphValues()
         {
-
+            
             float total = remaingCount + compCount;
 
             float completedPercentage = (compCount / total) * 100;
@@ -61,6 +64,46 @@ namespace HomeworkTracker
 
             parrotPieGraph1.Numbers[0] = (int)completedPercentage;
             parrotPieGraph1.Numbers[1] = (int)remainingPercentage;
+            parrotPieGraph1.Invalidate();
+        }
+
+        private void getAllTasks()
+        {
+            DataAccess db = new DataAccess();
+            List<Task> tasks = db.GetTasksWithProgress();
+
+
+            if (tasks.Count > 0)
+            {
+                flpTasksList.Controls.Clear();
+                foreach (Task task in tasks)
+                {
+                    TaskWithProgress taskWithProgress = new TaskWithProgress();
+                    taskWithProgress.Title = task.title;
+                    taskWithProgress.DueDate = task.dueDate.ToShortDateString();
+                    taskWithProgress.Percentage = task.progressPercentage;
+                    taskWithProgress.Data = task;
+                    flpTasksList.Controls.Add(taskWithProgress);
+                    taskWithProgress.updateParent += OnUpdateParent;
+                }
+            }
+            else
+            {
+                flpTasksList.Controls.Clear();
+                Label label = new Label();
+                label.Width = 500;
+                label.Text = "No ramaining tasks";
+                flpTasksList.Controls.Add(label);
+            }
+
+        }
+
+        private void OnUpdateParent(object sender, EventArgs e)
+        {
+            getCompletedCount();
+            getRemainingCount();
+            getAllTasks();
+            setGraphValues();
         }
     }
 }

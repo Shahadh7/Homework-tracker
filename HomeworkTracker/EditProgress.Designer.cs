@@ -28,13 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             panel1 = new Panel();
             closeButton = new ReaLTaiizor.Controls.SpaceClose();
             buttonUpdate = new CustomControls.RJControls.CustomButton();
             textBoxProgress = new CustomControls.RJControls.CustomTextBox();
             labelProgress = new Label();
             labelHeading = new Label();
+            errorProvider1 = new ErrorProvider(components);
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -79,7 +82,7 @@
             buttonUpdate.FlatStyle = FlatStyle.Flat;
             buttonUpdate.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttonUpdate.ForeColor = Color.White;
-            buttonUpdate.Location = new Point(241, 153);
+            buttonUpdate.Location = new Point(224, 148);
             buttonUpdate.Name = "buttonUpdate";
             buttonUpdate.Size = new Size(171, 40);
             buttonUpdate.TabIndex = 24;
@@ -97,7 +100,7 @@
             textBoxProgress.BorderSize = 2;
             textBoxProgress.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point);
             textBoxProgress.ForeColor = Color.FromArgb(64, 64, 64);
-            textBoxProgress.Location = new Point(135, 100);
+            textBoxProgress.Location = new Point(133, 88);
             textBoxProgress.Margin = new Padding(4);
             textBoxProgress.Multiline = false;
             textBoxProgress.Name = "textBoxProgress";
@@ -105,9 +108,8 @@
             textBoxProgress.PasswordChar = false;
             textBoxProgress.PlaceholderColor = Color.DarkGray;
             textBoxProgress.PlaceholderText = "";
-            textBoxProgress.Size = new Size(277, 31);
+            textBoxProgress.Size = new Size(262, 31);
             textBoxProgress.TabIndex = 20;
-            textBoxProgress.Text = "";
             textBoxProgress.UnderlinedStyle = false;
             // 
             // labelProgress
@@ -115,7 +117,7 @@
             labelProgress.AutoSize = true;
             labelProgress.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             labelProgress.ForeColor = Color.White;
-            labelProgress.Location = new Point(34, 100);
+            labelProgress.Location = new Point(32, 88);
             labelProgress.Name = "labelProgress";
             labelProgress.Size = new Size(94, 25);
             labelProgress.TabIndex = 16;
@@ -132,6 +134,10 @@
             labelHeading.TabIndex = 15;
             labelHeading.Text = "Update Progress";
             // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
+            // 
             // EditProgress
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -144,6 +150,7 @@
             Text = "EditProgress";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
         }
 
@@ -155,5 +162,6 @@
         private CustomControls.RJControls.CustomTextBox textBoxProgress;
         private Label labelProgress;
         private Label labelHeading;
+        private ErrorProvider errorProvider1;
     }
 }

@@ -36,7 +36,7 @@ namespace HomeworkTracker
                     TaskControl taskControl = new TaskControl();
                     taskControl.Completed = task.completed == 1 ? true : false;
                     taskControl.Title = task.title;
-                    taskControl.DueDate = task.dueDate.ToString();
+                    taskControl.DueDate = task.dueDate.ToShortDateString();
                     taskControl.Percentage = task.progressPercentage;
                     taskControl.ImportanceLevel = task.importanceLevelID.ToString();
                     taskControl.Data = task;

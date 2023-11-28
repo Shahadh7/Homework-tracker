@@ -244,7 +244,7 @@ namespace HomeworkTracker
 
                 try
                 {
-                    var sqlCheck = "SELECT title,dueDate,progressPercentage FROM hwtracker.task WHERE studentID = @studentID";
+                    var sqlCheck = "SELECT * FROM hwtracker.task WHERE studentID = @studentID";
 
                     tasks = connection.Query<Task>(sqlCheck, new { studentID = globalVariables.currentStudent.studentID}).ToList();
 
@@ -367,8 +367,8 @@ namespace HomeworkTracker
 
                 try
                 {
-                    var sql = "SELECT COUNT(taskID) as taskCount FROM hwtracker.task WHERE completed = 1;";
-                    var task = connection.QueryFirst(sql);
+                    var sql = "SELECT COUNT(taskID) as taskCount FROM hwtracker.task WHERE completed = 1 AND studentID = @studentID ;";
+                    var task = connection.QueryFirst(sql, new { studentID = globalVariables.currentStudent.studentID });
                     if(task != null)
                     {
                         count = task.taskCount;
@@ -395,8 +395,8 @@ namespace HomeworkTracker
 
                 try
                 {
-                    var sql = "SELECT COUNT(taskID) as taskCount FROM hwtracker.task WHERE completed = 0;";
-                    var task = connection.QueryFirst(sql);
+                    var sql = "SELECT COUNT(taskID) as taskCount FROM hwtracker.task WHERE completed = 0 AND studentID = @studentID;";
+                    var task = connection.QueryFirst(sql, new { studentID = globalVariables.currentStudent.studentID });
                     if (task != null)
                     {
                         count = task.taskCount;

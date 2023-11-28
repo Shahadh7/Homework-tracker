@@ -220,6 +220,44 @@ namespace HomeworkTracker
                     MessageBox.Show(ex.Message);
                 }
 
+                tasks.Sort((t1, t2) => {
+                    if (t1.importanceLevelID != t2.importanceLevelID)
+                    {
+                        return t1.importanceLevelID.CompareTo(t2.importanceLevelID);
+                    }
+                    else
+                    {
+                        return t1.dueDate.CompareTo(t2.dueDate);
+                    }
+                });
+
+                return tasks;
+            }
+        }
+
+        public List<Task> GetTasksWithProgress()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.connectionvalue("HWTracker")))
+            {
+
+                List<Task> tasks = new List<Task>();
+
+                try
+                {
+                    var sqlCheck = "SELECT title,dueDate,progressPercentage FROM hwtracker.task WHERE studentID = @studentID";
+
+                    tasks = connection.Query<Task>(sqlCheck, new { studentID = globalVariables.currentStudent.studentID}).ToList();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                tasks.Sort((t1, t2) => {
+                    return t1.dueDate.CompareTo(t2.dueDate);
+                });
+
                 return tasks;
             }
         }

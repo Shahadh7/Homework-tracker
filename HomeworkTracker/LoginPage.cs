@@ -32,7 +32,7 @@ namespace HomeworkTracker
 
             bool isValid = validateSingupData(username, password, passwordConf);
 
-            if(isValid)
+            if (isValid)
             {
                 DataAccess db = new DataAccess();
                 db.SignUp(username, password);
@@ -52,7 +52,7 @@ namespace HomeworkTracker
                 DataAccess db = new DataAccess();
                 isLoggedIn = db.Login(username, password);
 
-                if(isLoggedIn)
+                if (isLoggedIn)
                 {
                     AppContainer obj = new AppContainer();
                     this.Hide();
@@ -69,7 +69,7 @@ namespace HomeworkTracker
             bool passwordValid = false;
             bool passwordConfValid = false;
 
-            
+
             //validate username
             if (username == string.Empty)
             {
@@ -82,7 +82,7 @@ namespace HomeworkTracker
 
             //validate password
             if (password == string.Empty)
-            { 
+            {
                 errorProvider1.SetError(txtboxSignupPassword, "Password cannot be empty.");
 
             }
@@ -96,7 +96,7 @@ namespace HomeworkTracker
             {
                 errorProvider1.SetError(txtboxSignupPasswordConf, "Confirm Password cannot be empty.");
             }
-            else if(ConfPassword != password)
+            else if (ConfPassword != password)
             {
                 errorProvider1.SetError(txtboxSignupPasswordConf, "Password does not match.");
             }
@@ -106,7 +106,8 @@ namespace HomeworkTracker
             }
 
 
-            if (usernameValid && passwordValid && passwordConfValid) {
+            if (usernameValid && passwordValid && passwordConfValid)
+            {
                 return true;
             }
             else

@@ -33,7 +33,7 @@ namespace HomeworkTracker
             int count = db.completedTaskCount();
             completedCount.Text = count.ToString();
             compCount = count;
-            
+
         }
 
         private void getRemainingCount()
@@ -53,7 +53,7 @@ namespace HomeworkTracker
 
         private void setGraphValues()
         {
-            
+
             float total = remaingCount + compCount;
 
             float completedPercentage = (compCount / total) * 100;

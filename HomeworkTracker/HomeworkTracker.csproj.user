@@ -10,22 +10,25 @@
     <Compile Update="CategoryManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="CustomControls\CustomTextBox.cs">
+    <Compile Update="CustomControls\RJControls\CustomButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="CustomControls\RJControls\CustomComboBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="CustomControls\CustomButton.cs">
+    <Compile Update="CustomControls\RJControls\CustomProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="CustomControls\CustomComboBox.cs">
+    <Compile Update="CustomControls\RJControls\CustomRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="CustomControls\RJControls\CustomTextBox.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="CustomControls\CustomProgressBar.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="CustomControls\CustomRadioButton.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Update="CustomControls\TaskControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="CustomControls\TaskWithProgress.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="CustomControls\ToggleButton.cs">
@@ -35,6 +38,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="EditCategoryFormModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EditProgress.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="EditTaskFormModal.cs">

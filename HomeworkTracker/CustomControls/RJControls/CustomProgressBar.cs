@@ -9,7 +9,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.ComponentModel;
 
-namespace CustomControls.RJControls
+namespace HomeworkTracker.CustomControls.RJControls
 {
     public enum TextPosition
     {
@@ -40,8 +40,8 @@ namespace CustomControls.RJControls
         //Constructor
         public CustomProgressBar()
         {
-            this.SetStyle(ControlStyles.UserPaint, true);
-            this.ForeColor = Color.White;
+            SetStyle(ControlStyles.UserPaint, true);
+            ForeColor = Color.White;
         }
 
         //Properties
@@ -56,7 +56,7 @@ namespace CustomControls.RJControls
             set
             {
                 channelColor = value;
-                this.Invalidate();
+                Invalidate();
             }
         }
 
@@ -71,7 +71,7 @@ namespace CustomControls.RJControls
             set
             {
                 sliderColor = value;
-                this.Invalidate();
+                Invalidate();
             }
         }
 
@@ -86,7 +86,7 @@ namespace CustomControls.RJControls
             set
             {
                 foreBackColor = value;
-                this.Invalidate();
+                Invalidate();
             }
         }
 
@@ -101,7 +101,7 @@ namespace CustomControls.RJControls
             set
             {
                 channelHeight = value;
-                this.Invalidate();
+                Invalidate();
             }
         }
 
@@ -116,7 +116,7 @@ namespace CustomControls.RJControls
             set
             {
                 sliderHeight = value;
-                this.Invalidate();
+                Invalidate();
             }
         }
 
@@ -131,7 +131,7 @@ namespace CustomControls.RJControls
             set
             {
                 showValue = value;
-                this.Invalidate();
+                Invalidate();
             }
         }
 
@@ -146,7 +146,7 @@ namespace CustomControls.RJControls
             set
             {
                 symbolBefore = value;
-                this.Invalidate();
+                Invalidate();
             }
         }
 
@@ -161,7 +161,7 @@ namespace CustomControls.RJControls
             set
             {
                 symbolAfter = value;
-                this.Invalidate();
+                Invalidate();
             }
         }
 
@@ -176,7 +176,7 @@ namespace CustomControls.RJControls
             set
             {
                 showMaximun = value;
-                this.Invalidate();
+                Invalidate();
             }
         }
 
@@ -219,24 +219,24 @@ namespace CustomControls.RJControls
                 {
                     //Fields
                     Graphics graph = pevent.Graphics;
-                    Rectangle rectChannel = new Rectangle(0, 0, this.Width, ChannelHeight);
+                    Rectangle rectChannel = new Rectangle(0, 0, Width, ChannelHeight);
                     using (var brushChannel = new SolidBrush(channelColor))
                     {
                         if (channelHeight >= sliderHeight)
-                            rectChannel.Y = this.Height - channelHeight;
-                        else rectChannel.Y = this.Height - ((channelHeight + sliderHeight) / 2);
+                            rectChannel.Y = Height - channelHeight;
+                        else rectChannel.Y = Height - (channelHeight + sliderHeight) / 2;
 
                         //Painting
-                        graph.Clear(this.Parent.BackColor);//Surface
+                        graph.Clear(Parent.BackColor);//Surface
                         graph.FillRectangle(brushChannel, rectChannel);//Channel
 
                         //Stop painting the back & Channel
-                        if (this.DesignMode == false)
+                        if (DesignMode == false)
                             paintedBack = true;
                     }
                 }
                 //Reset painting the back & channel
-                if (this.Value == this.Maximum || this.Value == this.Minimum)
+                if (Value == Maximum || Value == Minimum)
                     paintedBack = false;
             }
         }
@@ -247,14 +247,14 @@ namespace CustomControls.RJControls
             {
                 //Fields
                 Graphics graph = e.Graphics;
-                double scaleFactor = (((double)this.Value - this.Minimum) / ((double)this.Maximum - this.Minimum));
-                int sliderWidth = (int)(this.Width * scaleFactor);
+                double scaleFactor = ((double)Value - Minimum) / ((double)Maximum - Minimum);
+                int sliderWidth = (int)(Width * scaleFactor);
                 Rectangle rectSlider = new Rectangle(0, 0, sliderWidth, sliderHeight);
                 using (var brushSlider = new SolidBrush(sliderColor))
                 {
                     if (sliderHeight >= channelHeight)
-                        rectSlider.Y = this.Height - sliderHeight;
-                    else rectSlider.Y = this.Height - ((sliderHeight + channelHeight) / 2);
+                        rectSlider.Y = Height - sliderHeight;
+                    else rectSlider.Y = Height - (sliderHeight + channelHeight) / 2;
 
                     //Painting
                     if (sliderWidth > 1) //Slider
@@ -263,7 +263,7 @@ namespace CustomControls.RJControls
                         DrawValueText(graph, sliderWidth, rectSlider);
                 }
             }
-            if (this.Value == this.Maximum) stopPainting = true;//Stop painting
+            if (Value == Maximum) stopPainting = true;//Stop painting
             else stopPainting = false; //Keep painting
         }
 
@@ -271,11 +271,11 @@ namespace CustomControls.RJControls
         private void DrawValueText(Graphics graph, int sliderWidth, Rectangle rectSlider)
         {
             //Fields
-            string text = symbolBefore + this.Value.ToString() + symbolAfter;
-            if (showMaximun) text = text + "/" + symbolBefore + this.Maximum.ToString() + symbolAfter;
-            var textSize = TextRenderer.MeasureText(text, this.Font);
+            string text = symbolBefore + Value.ToString() + symbolAfter;
+            if (showMaximun) text = text + "/" + symbolBefore + Maximum.ToString() + symbolAfter;
+            var textSize = TextRenderer.MeasureText(text, Font);
             var rectText = new Rectangle(0, 0, textSize.Width, textSize.Height + 2);
-            using (var brushText = new SolidBrush(this.ForeColor))
+            using (var brushText = new SolidBrush(ForeColor))
             using (var brushTextBack = new SolidBrush(foreBackColor))
             using (var textFormat = new StringFormat())
             {
@@ -287,12 +287,12 @@ namespace CustomControls.RJControls
                         break;
 
                     case TextPosition.Right:
-                        rectText.X = this.Width - textSize.Width;
+                        rectText.X = Width - textSize.Width;
                         textFormat.Alignment = StringAlignment.Far;
                         break;
 
                     case TextPosition.Center:
-                        rectText.X = (this.Width - textSize.Width) / 2;
+                        rectText.X = (Width - textSize.Width) / 2;
                         textFormat.Alignment = StringAlignment.Center;
                         break;
 
@@ -300,7 +300,7 @@ namespace CustomControls.RJControls
                         rectText.X = sliderWidth - textSize.Width;
                         textFormat.Alignment = StringAlignment.Center;
                         //Clean previous text surface
-                        using (var brushClear = new SolidBrush(this.Parent.BackColor))
+                        using (var brushClear = new SolidBrush(Parent.BackColor))
                         {
                             var rect = rectSlider;
                             rect.Y = rectText.Y;
@@ -311,7 +311,7 @@ namespace CustomControls.RJControls
                 }
                 //Painting
                 graph.FillRectangle(brushTextBack, rectText);
-                graph.DrawString(text, this.Font, brushText, rectText, textFormat);
+                graph.DrawString(text, Font, brushText, rectText, textFormat);
             }
         }
 

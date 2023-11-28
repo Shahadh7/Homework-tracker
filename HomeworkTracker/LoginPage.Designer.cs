@@ -204,6 +204,7 @@
             txtboxSignupPasswordConf.PlaceholderText = "Enter confirm password";
             txtboxSignupPasswordConf.Size = new Size(324, 31);
             txtboxSignupPasswordConf.TabIndex = 15;
+            txtboxSignupPasswordConf.Text = "";
             txtboxSignupPasswordConf.UnderlinedStyle = true;
             // 
             // lblConfirmPassword
@@ -267,6 +268,7 @@
             txtboxSignupPassword.PlaceholderText = "Enter password";
             txtboxSignupPassword.Size = new Size(324, 31);
             txtboxSignupPassword.TabIndex = 13;
+            txtboxSignupPassword.Text = "";
             txtboxSignupPassword.UnderlinedStyle = true;
             // 
             // label4
@@ -297,6 +299,7 @@
             txtboxSignupUsername.PlaceholderText = "Enter username";
             txtboxSignupUsername.Size = new Size(324, 31);
             txtboxSignupUsername.TabIndex = 11;
+            txtboxSignupUsername.Text = "";
             txtboxSignupUsername.UnderlinedStyle = true;
             // 
             // label5
@@ -371,6 +374,7 @@
             txtboxLoginPassword.PlaceholderText = "Enter password";
             txtboxLoginPassword.Size = new Size(324, 31);
             txtboxLoginPassword.TabIndex = 6;
+            txtboxLoginPassword.Text = "";
             txtboxLoginPassword.UnderlinedStyle = true;
             // 
             // lblPassword
@@ -401,6 +405,7 @@
             txtboxLoginUsername.PlaceholderText = "Enter Username";
             txtboxLoginUsername.Size = new Size(324, 31);
             txtboxLoginUsername.TabIndex = 4;
+            txtboxLoginUsername.Text = "";
             txtboxLoginUsername.UnderlinedStyle = true;
             // 
             // lblUsername

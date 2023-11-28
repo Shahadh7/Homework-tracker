@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 
-namespace CustomControls.RJControls
+namespace HomeworkTracker.CustomControls.RJControls
 {
     [DefaultEvent("_TextChanged")]
     public partial class CustomTextBox : UserControl
@@ -288,7 +288,7 @@ namespace CustomControls.RJControls
                 if (isPasswordChar)
                     textBox1.UseSystemPasswordChar = true;
             }
-        }        
+        }
         private GraphicsPath GetFigurePath(Rectangle rect, int radius)
         {
             GraphicsPath path = new GraphicsPath();

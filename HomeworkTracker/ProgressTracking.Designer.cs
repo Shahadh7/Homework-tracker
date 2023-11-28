@@ -43,6 +43,7 @@
             completedCount = new Label();
             foxBigLabel2 = new ReaLTaiizor.Controls.FoxBigLabel();
             foxBigLabel1 = new ReaLTaiizor.Controls.FoxBigLabel();
+            flpTasksList = new FlowLayoutPanel();
             pieChartCard.SuspendLayout();
             materialCard1.SuspendLayout();
             SuspendLayout();
@@ -221,6 +222,13 @@
             foxBigLabel1.TabIndex = 0;
             foxBigLabel1.Text = "Completed : ";
             // 
+            // flpTasksList
+            // 
+            flpTasksList.Location = new Point(12, 362);
+            flpTasksList.Name = "flpTasksList";
+            flpTasksList.Size = new Size(736, 400);
+            flpTasksList.TabIndex = 10;
+            // 
             // ProgressTracking
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -228,6 +236,7 @@
             BackColor = Color.FromArgb(216, 238, 254);
             ClientSize = new Size(760, 783);
             ControlBox = false;
+            Controls.Add(flpTasksList);
             Controls.Add(materialCard1);
             Controls.Add(pieChartCard);
             Controls.Add(labelHeading);
@@ -259,5 +268,6 @@
         private Label completedCount;
         private ReaLTaiizor.Controls.FoxBigLabel foxBigLabel2;
         private ReaLTaiizor.Controls.FoxBigLabel foxBigLabel1;
+        private FlowLayoutPanel flpTasksList;
     }
 }

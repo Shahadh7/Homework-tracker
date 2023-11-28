@@ -17,10 +17,12 @@ C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\obj\Debug\net6.0-window
 C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\obj\Debug\net6.0-windows\HomeworkTracker.AddNewTaskFormModal.resources
 C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\obj\Debug\net6.0-windows\HomeworkTracker.AppContainer.resources
 C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\obj\Debug\net6.0-windows\HomeworkTracker.CategoryManagement.resources
-C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\obj\Debug\net6.0-windows\CustomControls.RJControls.CustomTextBox.resources
+C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\obj\Debug\net6.0-windows\HomeworkTracker.CustomControls.RJControls.CustomTextBox.resources
 C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\obj\Debug\net6.0-windows\CustomControlsProject.CustomControls.TaskControl.resources
+C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\obj\Debug\net6.0-windows\HomeworkTracker.CustomControls.TaskWithProgress.resources
 C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\obj\Debug\net6.0-windows\HomeworkTracker.Dashboard.resources
 C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\obj\Debug\net6.0-windows\HomeworkTracker.EditCategoryFormModal.resources
+C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\obj\Debug\net6.0-windows\HomeworkTracker.EditProgress.resources
 C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\obj\Debug\net6.0-windows\HomeworkTracker.EditTaskFormModal.resources
 C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\obj\Debug\net6.0-windows\HomeworkTracker.LoginPage.resources
 C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\obj\Debug\net6.0-windows\HomeworkTracker.ProgressTracking.resources

@@ -74,27 +74,32 @@ namespace HomeworkTracker
 
             if (dgvCategoryTable.SelectedRows.Count != 0)
             {
-                DataGridViewRow row = dgvCategoryTable.SelectedRows[0];
-                string catName = (string)row.Cells["Category"].Value;
-                var category = categories.Find(item => item.name == catName);
 
-                if (category != null)
+                DialogResult dialogResult = MessageBox.Show("Do you really want to delete this category?", "Confirm", MessageBoxButtons.YesNo);
+
+
+                if (dialogResult == DialogResult.Yes)
                 {
-                    DataAccess db = new DataAccess();
-                    bool isExist = db.isTaskExistsWithCategoryID(category.categoryID);
+                    DataGridViewRow row = dgvCategoryTable.SelectedRows[0];
+                    string catName = (string)row.Cells["Category"].Value;
+                    var category = categories.Find(item => item.name == catName);
 
-                    if (!isExist)
+                    if (category != null)
                     {
-                        db.RemoveCategory(category.categoryID);
-                        fetchAllAvailableCategories();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Unable to delete category: Tasks are still associated with this category. Please remove all tasks from this category before attempting to delete it.");
+                        DataAccess db = new DataAccess();
+                        bool isExist = db.isTaskExistsWithCategoryID(category.categoryID);
+
+                        if (!isExist)
+                        {
+                            db.RemoveCategory(category.categoryID);
+                            fetchAllAvailableCategories();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Unable to delete category: Tasks are still associated with this category. Please remove all tasks from this category before attempting to delete it.");
+                        }
                     }
                 }
-                
-
             }
             else
             {

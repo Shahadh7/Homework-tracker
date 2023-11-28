@@ -85,7 +85,7 @@ namespace HomeworkTracker
                     }
                 }catch(Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("User does not exist.");
                 }
 
                 
@@ -114,6 +114,17 @@ namespace HomeworkTracker
                     MessageBox.Show(ex.Message);
                 }
 
+                tasks.Sort((t1, t2) => {
+                    if (t1.importanceLevelID != t2.importanceLevelID)
+                    {
+                        return t1.importanceLevelID.CompareTo(t2.importanceLevelID);
+                    }
+                    else
+                    {
+                        return t1.dueDate.CompareTo(t2.dueDate);
+                    }
+                });
+
                 return tasks;
             }
         }
@@ -134,6 +145,16 @@ namespace HomeworkTracker
                 {
                     MessageBox.Show(ex.Message);
                 }
+                tasks.Sort((t1, t2) => {
+                    if (t1.importanceLevelID != t2.importanceLevelID)
+                    {
+                        return t1.importanceLevelID.CompareTo(t2.importanceLevelID);
+                    }
+                    else
+                    {
+                        return t1.dueDate.CompareTo(t2.dueDate);
+                    }
+                });
 
                 return tasks;
             }
@@ -160,6 +181,17 @@ namespace HomeworkTracker
                 {
                     MessageBox.Show(ex.Message);
                 }
+
+                tasks.Sort((t1, t2) => {
+                    if (t1.importanceLevelID != t2.importanceLevelID)
+                    {
+                        return t1.importanceLevelID.CompareTo(t2.importanceLevelID);
+                    }
+                    else
+                    {
+                        return t1.dueDate.CompareTo(t2.dueDate);
+                    }
+                });
 
                 return tasks;
             }

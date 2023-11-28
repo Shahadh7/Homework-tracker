@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             panel1 = new Panel();
             closeButton = new ReaLTaiizor.Controls.SpaceClose();
             buttonSave = new CustomControls.RJControls.CustomButton();
@@ -40,7 +41,9 @@
             labelDueDate = new Label();
             labelTitle = new Label();
             labelHeading = new Label();
+            addTaskErrorProvider = new ErrorProvider(components);
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)addTaskErrorProvider).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -205,6 +208,10 @@
             labelHeading.TabIndex = 0;
             labelHeading.Text = "Add New Task";
             // 
+            // addTaskErrorProvider
+            // 
+            addTaskErrorProvider.ContainerControl = this;
+            // 
             // AddNewTaskFormModal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -218,6 +225,7 @@
             Text = "Add New Task";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)addTaskErrorProvider).EndInit();
             ResumeLayout(false);
         }
 
@@ -235,5 +243,6 @@
         private CustomControls.RJControls.CustomTextBox textBoxTitle;
         private CustomControls.RJControls.CustomButton buttonSave;
         private ReaLTaiizor.Controls.SpaceClose closeButton;
+        private ErrorProvider addTaskErrorProvider;
     }
 }

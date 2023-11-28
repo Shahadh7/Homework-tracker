@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             closeButton = new ReaLTaiizor.Controls.SpaceClose();
             buttonUpdate = new CustomControls.RJControls.CustomButton();
             comboBoxPriority = new ReaLTaiizor.Controls.PoisonComboBox();
@@ -42,7 +43,9 @@
             panel1 = new Panel();
             textBoxPercentage = new CustomControls.RJControls.CustomTextBox();
             labelPercentage = new Label();
+            editTaskErrorProvider = new ErrorProvider(components);
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)editTaskErrorProvider).BeginInit();
             SuspendLayout();
             // 
             // closeButton
@@ -241,6 +244,10 @@
             labelPercentage.TabIndex = 15;
             labelPercentage.Text = "Percentage :";
             // 
+            // editTaskErrorProvider
+            // 
+            editTaskErrorProvider.ContainerControl = this;
+            // 
             // EditTaskFormModal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -253,6 +260,7 @@
             Text = "EditTaskFormModal";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)editTaskErrorProvider).EndInit();
             ResumeLayout(false);
         }
 
@@ -272,5 +280,6 @@
         private Panel panel1;
         private Label labelPercentage;
         private CustomControls.RJControls.CustomTextBox textBoxPercentage;
+        private ErrorProvider editTaskErrorProvider;
     }
 }

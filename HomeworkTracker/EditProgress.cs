@@ -24,10 +24,16 @@ namespace HomeworkTracker
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-
+            errorProvider1.Clear();
             if (textBoxProgress.Text != string.Empty && int.TryParse(textBoxProgress.Text, out _))
             {
-                task.progressPercentage = Convert.ToInt16(textBoxProgress.Text);
+                try
+                {
+                    task.progressPercentage = Convert.ToInt16(textBoxProgress.Text);
+                }
+                catch(Exception) {
+                    errorProvider1.SetError(textBoxProgress, "Progress percentage should be in the range of (0-100).");
+                }
             }
 
             bool isValid = validateData(task);

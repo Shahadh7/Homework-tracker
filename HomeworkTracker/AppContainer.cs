@@ -120,7 +120,11 @@ namespace HomeworkTracker
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            //Application.Exit();
+            this.Close();
+            globalVariables.currentStudent = null;
+            LoginPage loginPage = new();
+            loginPage.Show();
         }
     }
 }

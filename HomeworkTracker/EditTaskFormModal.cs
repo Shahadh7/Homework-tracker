@@ -58,6 +58,7 @@ namespace HomeworkTracker
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
+            editTaskErrorProvider.Clear();
             currenTask.title = textBoxTitle.Text;
             currenTask.dueDate = Convert.ToDateTime(dateTimeDueDate.Text);
             string selectedCategory = comboBoxCategory.Text;
@@ -68,16 +69,22 @@ namespace HomeworkTracker
 
             currenTask.importanceLevelID = comboBoxPriority.SelectedIndex + 1;
 
-            
+
 
             if (textBoxPercentage.Text != string.Empty && int.TryParse(textBoxPercentage.Text, out _))
             {
-                currenTask.progressPercentage = Convert.ToInt16(textBoxPercentage.Text);
+                try
+                {
+                    currenTask.progressPercentage = Convert.ToInt16(textBoxPercentage.Text);
+                }
+                catch (Exception) {
+                    editTaskErrorProvider.SetError(textBoxPercentage, "Progress percentage should be in the range of (0-100).");
+                }
             }
 
             bool isValid = validateInputs(currenTask);
 
-            if(isValid)
+            if (isValid)
             {
                 DataAccess db = new DataAccess();
                 db.UpdateTask(currenTask);
@@ -138,11 +145,11 @@ namespace HomeworkTracker
             {
                 editTaskErrorProvider.SetError(textBoxPercentage, "Invalid input.");
             }
-            else if(Convert.ToBoolean(task.completed) && task.progressPercentage != 100)
+            else if (Convert.ToBoolean(task.completed) && task.progressPercentage != 100)
             {
                 editTaskErrorProvider.SetError(textBoxPercentage, "You cannot edit the completed task's progress percentage.");
             }
-            else if(task.progressPercentage > 100 || task.progressPercentage < 0)
+            else if (task.progressPercentage > 100 || task.progressPercentage < 0)
             {
                 editTaskErrorProvider.SetError(textBoxPercentage, "Progress percentage should be in the range of (0-100).");
             }

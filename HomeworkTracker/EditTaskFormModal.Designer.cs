@@ -80,7 +80,7 @@
             buttonUpdate.Name = "buttonUpdate";
             buttonUpdate.Size = new Size(150, 40);
             buttonUpdate.TabIndex = 12;
-            buttonUpdate.Text = "Save";
+            buttonUpdate.Text = "Update";
             buttonUpdate.TextColor = Color.White;
             buttonUpdate.UseVisualStyleBackColor = false;
             buttonUpdate.Click += buttonUpdate_Click;

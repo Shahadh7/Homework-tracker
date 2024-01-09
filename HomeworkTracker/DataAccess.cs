@@ -27,8 +27,6 @@ namespace HomeworkTracker
 
                         var affectedRows = connection.Execute(sql, student);
 
-                        MessageBox.Show(affectedRows.ToString());
-
                         connection.Close();
 
                         if (affectedRows == 1)

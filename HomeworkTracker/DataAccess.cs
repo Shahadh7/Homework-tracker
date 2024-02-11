@@ -21,9 +21,12 @@ namespace HomeworkTracker
 
                     if (students.Count == 0)
                     {
+
+                        string hashedPassword = PasswordHasher.hashPassword(password);
+
                         var sql = "INSERT INTO hwtracker.student (studentName, password) VALUES (@studentName, @password)";
 
-                        var student = new Student() { studentName = username.ToLower(), password = password };
+                        var student = new Student() { studentName = username.ToLower(), password = hashedPassword };
 
                         var affectedRows = connection.Execute(sql, student);
 
@@ -65,7 +68,7 @@ namespace HomeworkTracker
 
                     if (studentExist != null)
                     {
-                        if(studentExist.password ==  password)
+                        if(PasswordHasher.verifyPassword(password, studentExist.password))
                         {
                             isValid = true;
                             globalVariables.currentStudent = studentExist;

@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "vvkAHGjuRiYWJdE6uDw21H4EY6LuEqxdj19sjQoPFOWF95HTpnOt1BHsfH9K88C4rLLm5Wk/Osubl6VgcR+YPQ==",
+  "dgSpecHash": "QiQ7712YDHfA00nZIni1TYmIAS1TxKvqLamDanXduqrKK4y0DBedT/hjJwVHFiqXt6XZrS7D/EGoErR3t7lmqQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\pc\\source\\repos\\HomeworkTracker\\HomeworkTracker\\HomeworkTracker.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\pc\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\dapper\\2.1.21\\dapper.2.1.21.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

@@ -39,3 +39,4 @@ C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\obj\Debug\net6.0-window
 C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\obj\Debug\net6.0-windows\HomeworkTracker.pdb
 C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\obj\Debug\net6.0-windows\HomeworkTracker.genruntimeconfig.cache
 C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\obj\Debug\net6.0-windows\ref\HomeworkTracker.dll
+C:\Users\pc\source\repos\HomeworkTracker\HomeworkTracker\bin\Debug\net6.0-windows\BCrypt.Net-Next.dll

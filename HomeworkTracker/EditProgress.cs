@@ -33,6 +33,7 @@ namespace HomeworkTracker
                 }
                 catch(Exception) {
                     errorProvider1.SetError(textBoxProgress, "Progress percentage should be in the range of (0-100).");
+                    return;
                 }
             }
 
